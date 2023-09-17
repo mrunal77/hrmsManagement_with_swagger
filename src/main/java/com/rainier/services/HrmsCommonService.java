@@ -3,6 +3,9 @@ package com.rainier.services;
 import com.rainier.beans.*;
 import com.rainier.businesslogic.ListOfValues;
 import com.rainier.dto.requestBean.PositionRequestBean;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -10,8 +13,10 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
+@CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = "*")
 @Path("/common")
+@Api("/Common Service")
+@SwaggerDefinition(tags = {@Tag(name = "Common Service", description = "REST Common Service")})
 public class HrmsCommonService {
 
 	private static final Logger logger = Logger.getLogger(HrmsCommonService.class);
@@ -19,7 +24,6 @@ public class HrmsCommonService {
 
 	@Path("getReportingManagerList")
 	@Produces(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	@GET
 	public Response getManagerList(@QueryParam(value = "roleId") int roleId) {
 
@@ -32,7 +36,6 @@ public class HrmsCommonService {
 
 	@Path("/getPositionList")
 	@Produces(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	@GET
 	public Response getPositionsList(@QueryParam(value = "jobTitleId") int jobTitleId) {
 
@@ -199,7 +202,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response saveGender(PersonalGenderBean genderBean) {
 		return values.addGender(genderBean);
 
@@ -210,7 +212,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response savemarital(PersonalMaritalStatusBean maritalBean) {
 		return values.addmarital(maritalBean);
 
@@ -221,7 +222,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response saveNation(PersonalNationalityBean nationBean) {
 		return values.addNationality(nationBean);
 
@@ -242,7 +242,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response saveEthnic(PersonalEthnicCodeBean ethnicBean) {
 		return values.addEthnicCode(ethnicBean);
 
@@ -253,7 +252,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response saveRace(PersonalRaceCodeBean raceBean) {
 		return values.addRaceCode(raceBean);
 
@@ -264,7 +262,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response saveLanguage(personalLanguageBean langBean) {
 		return values.addlanguage(langBean);
 
@@ -317,7 +314,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response savecurrency(SalaryCurrencyBean bean) {
 		return values.addcurrency(bean);
 
@@ -328,7 +324,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response savePayFreq(SalaryPayFrequencyBean bean) {
 		return values.savePayFrequency(bean);
 
@@ -349,7 +344,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response saveAccountClassType(SalaryAccountclassTypeBean bean) {
 		return values.saveAccountClassType(bean);
 	}
@@ -359,7 +353,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response saveBankAccount(SalaryBankAccountTypeBean bean) {
 		return values.saveBankAccountType(bean);
 	}
@@ -385,7 +378,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response saveSkills(SkillsBean bean) {
 		return values.saveSkill(bean);
 
@@ -404,7 +396,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response updateSkills(SkillsBean bean) {
 		return values.updateSkills(bean);
 
@@ -434,7 +425,6 @@ public class HrmsCommonService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response updatePayFreqency(SalaryPayFrequencyBean bean) {
 		return values.updatePayFrequency(bean);
 

@@ -30,7 +30,6 @@ import com.rainier.businesslogic.BackgroundCheckDetails;
 import com.rainier.utility.FileUploader;
 
 @Path("/BackgroundCheck")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 public class HrmsBackgroundVerificationService {
 	private static FileUploader upload = new FileUploader();
 

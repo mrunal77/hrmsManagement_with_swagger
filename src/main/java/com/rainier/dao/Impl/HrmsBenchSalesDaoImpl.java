@@ -344,7 +344,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 						hql = "select distinct(id),firstName,emailAddress,cellPhone,domain,middleName,lastName,dateOfBirth,homePhone,workPhone,city,currentLocation,reLocation,"
 								+ "hotListDate,ssn,availability,uploadProfile,refernce,comments from BenchSalesAddCandidateEntity where id="
 								+ canId + " and deleted='0'";
-						List<Object[]> query = (List<Object[]>) DbConnect.DbCon().createNativeQuery(hql).getResultList();
+						List<Object[]> query = (List<Object[]>) DbConnect.DbCon().createSQLQuery(hql).getResultList();
 						logger.info(query);
 						if (query != null) {
 							for (Object[] ob : query) {
@@ -390,7 +390,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 								canBean.setComments(comments);
 								hql2 = "select distinct(r.id),r.userfullname from main_users as r inner join candidate_sales_executive as cr on r.id=cr.rec_id where cr.can_id="
 										+ canId + "";
-								usersMinilist = DbConnect.DbCon().createNativeQuery(hql2).list();
+								usersMinilist = DbConnect.DbCon().createSQLQuery(hql2).list();
 								for (Object[] ob2 : usersMinilist) {
 									int id = (Integer) ob2[0];
 									String userFullName = (String) ob2[1];
@@ -406,10 +406,10 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 									}
 									logger.info(id1);
 									String getSaleManIdQuery = "select reporting_manager from main_employees_summary Where user_id=:id1 ";
-									saleManId = (int) DbConnect.DbCon().createNativeQuery(getSaleManIdQuery)
+									saleManId = (int) DbConnect.DbCon().createSQLQuery(getSaleManIdQuery)
 											.setParameter("id1", id1).uniqueResult();
 									String getSaleManIdName = "select id,userfullname from main_users where id=:saleManId";
-									List<Object[]> user1 = DbConnect.DbCon().createNativeQuery(getSaleManIdName)
+									List<Object[]> user1 = DbConnect.DbCon().createSQLQuery(getSaleManIdName)
 											.setParameter("saleManId", saleManId).list();
 									for (Object[] ob1 : user1) {
 										int id3 = (Integer) ob1[0];
@@ -552,7 +552,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 					+ " from BenchSalesAddCandidateEntity as c "
 					+ "left join candidate_sales_executive as cr on c.id=cr.can_id and c.deleted='0' where cr.rec_id="
 					+ recId + "";
-			query1 = DbConnect.DbCon().createNativeQuery(hql1).list();
+			query1 = DbConnect.DbCon().createSQLQuery(hql1).list();
 			for (Object[] ob : query1) {
 				CandidateRecruitersResponse benchCan = new CandidateRecruitersResponse();
 				List<User> users = new ArrayList<>();
@@ -592,7 +592,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 				}
 				hql = "select distinct(r.id), r.userfullname from main_users as r inner join candidate_sales_executive as cr on r.id=cr.rec_id where cr.can_id="
 						+ id + "";
-				recruiters = DbConnect.DbCon().createNativeQuery(hql).list();
+				recruiters = DbConnect.DbCon().createSQLQuery(hql).list();
 				for (Object[] u : recruiters) {
 					User u1 = new User();
 					int id1 = (int) u[0];
@@ -602,11 +602,11 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 					users.add(u1);
 
 					String getSaleManIdQuery = "select reporting_manager from main_employees_summary Where user_id=:recId ";
-					int saleManId = (int) DbConnect.DbCon().createNativeQuery(getSaleManIdQuery)
+					int saleManId = (int) DbConnect.DbCon().createSQLQuery(getSaleManIdQuery)
 							.setParameter("recId", recId).uniqueResult();
 
 					String getSaleManIdName = "select distinct(id),userfullname from main_users where id=:saleManId";
-					List<Object[]> user1 = DbConnect.DbCon().createNativeQuery(getSaleManIdName)
+					List<Object[]> user1 = DbConnect.DbCon().createSQLQuery(getSaleManIdName)
 							.setParameter("saleManId", saleManId).list();
 					for (Object[] ob1 : user1) {
 						int id2 = (Integer) ob1[0];
@@ -659,7 +659,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 					+ "where c.deleted='0' and c.id not in (select c.id from BenchSalesAddCandidateEntity as c\r\n"
 					+ "right join candidate_sales_executive as cr on c.id=cr.can_id  where cr.rec_id=" + recId + ")\r\n"
 					+ "\r\n" + "";
-			query1 = DbConnect.DbCon().createNativeQuery(hql1).list();
+			query1 = DbConnect.DbCon().createSQLQuery(hql1).list();
 
 			for (Object[] ob : query1) {
 
@@ -702,7 +702,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 
 				hql = "select distinct(r.id),r.userfullname from main_users as r inner join candidate_sales_executive as cr on r.id=cr.rec_id where cr.can_id="
 						+ id + "";
-				recruiters = DbConnect.DbCon().createNativeQuery(hql).list();
+				recruiters = DbConnect.DbCon().createSQLQuery(hql).list();
 				for (Object[] u : recruiters) {
 					User u1 = new User();
 					int id1 = (int) u[0];
@@ -711,11 +711,11 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 					u1.setUserfullName(recName);
 					users.add(u1);
 					String getSaleManIdQuery = "select reporting_manager from main_employees_summary Where user_id=:id1 ";
-					int saleManId = (int) DbConnect.DbCon().createNativeQuery(getSaleManIdQuery).setParameter("id1", id1)
+					int saleManId = (int) DbConnect.DbCon().createSQLQuery(getSaleManIdQuery).setParameter("id1", id1)
 							.uniqueResult();
 
 					String getSaleManIdName = "select id,userfullname from main_users where id=:saleManId";
-					List<Object[]> user1 = DbConnect.DbCon().createNativeQuery(getSaleManIdName)
+					List<Object[]> user1 = DbConnect.DbCon().createSQLQuery(getSaleManIdName)
 							.setParameter("saleManId", saleManId).list();
 					for (Object[] ob1 : user1) {
 						int id2 = (Integer) ob1[0];
@@ -863,7 +863,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 					.createQuery("select max(vendorId) from BenchSalesVendorCandidateMappingEntity where can_id=:id")
 					.setParameter("id", id).uniqueResult();
 			logger.info(vendorId);
-			query = DbConnect.DbCon().createNativeQuery(
+			query = DbConnect.DbCon().createSQLQuery(
 					"Update candidate_vendor  set status=:status1,statussubmissiondate=:date where can_id=:id and vendor_id=:vendorId")
 					.setParameter("id", id).setParameter("vendorId", vendorId).setParameter("status1", status1)
 					.setParameter("date", date);
@@ -916,7 +916,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 
 		try {
 			tx = DbConnect.DbCon().beginTransaction();
-			list1 = DbConnect.DbCon().createNativeQuery(hql).list();
+			list1 = DbConnect.DbCon().createSQLQuery(hql).list();
 
 			tx.commit();
 			logger.info(list1);
@@ -1043,7 +1043,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 
 		try {
 			tx = DbConnect.DbCon().beginTransaction();
-			list1 = DbConnect.DbCon().createNativeQuery(hql).list();
+			list1 = DbConnect.DbCon().createSQLQuery(hql).list();
 
 			tx.commit();
 			logger.info(list1);
@@ -1247,7 +1247,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			tx = DbConnect.DbCon().beginTransaction();
 			hql = "select status,statussubmissiondate from candidate_vendor  where vendor_id=" + venId + " and can_id="
 					+ canId + "";
-			list1 = DbConnect.DbCon().createNativeQuery(hql).list();
+			list1 = DbConnect.DbCon().createSQLQuery(hql).list();
 			tx.commit();
 			logger.info(" Status And Status Submission Date Retrived Successfully ");
 			return list1;
@@ -1273,7 +1273,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			tx = DbConnect.DbCon().beginTransaction();
 			majorList = new ArrayList<>();
 			hql = "select distinct(cv.can_id) from vendor_details as v right join candidate_vendor as cv on v.vendor_id=v.vendor_id";
-			List<BigInteger> listId = (List<BigInteger>) DbConnect.DbCon().createNativeQuery(hql).list();
+			List<BigInteger> listId = (List<BigInteger>) DbConnect.DbCon().createSQLQuery(hql).list();
 			Iterator<BigInteger> iterator1 = listId.iterator();
 			while (iterator1.hasNext()) {
 				object = (Object) iterator1.next();
@@ -1281,7 +1281,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 					int canId = (int) object;
 					hql1 = "select count(*) from vendor_details as v right join candidate_vendor as cv on v.vendor_id=cv.vendor_id where cv.can_id="
 							+ canId + "";
-					miniList = (List<BigInteger>) DbConnect.DbCon().createNativeQuery(hql1).list();
+					miniList = (List<BigInteger>) DbConnect.DbCon().createSQLQuery(hql1).list();
 					majorList.add((ArrayList<BigInteger>) miniList);
 				}
 			}
@@ -1403,15 +1403,15 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			queryForMaxId = "select max(cv.id) from candidate_vendor  as cv  inner join vendor_details  as v on v.vendor_id=cv.vendor_id  where cv.can_id="
 					+ id + "" + " and v.created_by=" + recId + "";
 			@SuppressWarnings("deprecation")
-			int maxId = (int) DbConnect.DbCon().createNativeQuery(queryForMaxId).uniqueResult();
+			int maxId = (int) DbConnect.DbCon().createSQLQuery(queryForMaxId).uniqueResult();
 		    queryForStausComm = "select status,comments from candidate_vendor where id=" + maxId + "";
-			listOfStatusUpdate = DbConnect.DbCon().createNativeQuery(queryForStausComm).list();
+			listOfStatusUpdate = DbConnect.DbCon().createSQLQuery(queryForStausComm).list();
 			queryForVendorDetails = "select distinct(v.vendor_id),v.vendor_name,v.email_address,v.phone_no,v.client_name,v.location,v.rate,v.date_of_submission,"
 					+ "v.created_by,max(cv.statussubmissiondate),v.pay_type"
 					+ "  from vendor_details  as v  left join candidate_vendor  as cv on v.vendor_id=cv.vendor_id  where cv.can_id="
 					+ id + "" + " and v.created_by=" + recId + " group by v.vendor_id";
 
-			listOfVendor = DbConnect.DbCon().createNativeQuery(queryForVendorDetails).list();
+			listOfVendor = DbConnect.DbCon().createSQLQuery(queryForVendorDetails).list();
 			for (Object[] ob : listOfVendor) {
 				BenchSalesVendorDetailsBean entity1 = new BenchSalesVendorDetailsBean();
 				int vendorId = (Integer) ob[0];
@@ -1505,7 +1505,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 
 		try {
 			tx = DbConnect.DbCon().beginTransaction();
-			list1 = DbConnect.DbCon().createNativeQuery(hql).list();
+			list1 = DbConnect.DbCon().createSQLQuery(hql).list();
 
 			tx.commit();
 			logger.info(list1);
@@ -1680,10 +1680,10 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 		try {
 			tx = DbConnect.DbCon().beginTransaction();
 			logger.info(salId);
-			salesExeId = (int) DbConnect.DbCon().createNativeQuery(hql).setParameter("salId", salId).getSingleResult();
+			salesExeId = (int) DbConnect.DbCon().createSQLQuery(hql).setParameter("salId", salId).getSingleResult();
 			logger.info(salesExeId);
 			hql1 = "select emailaddress from main_users where id=:salesExeId";
-			email = (String) DbConnect.DbCon().createNativeQuery(hql1).setParameter("salesExeId", salesExeId)
+			email = (String) DbConnect.DbCon().createSQLQuery(hql1).setParameter("salesExeId", salesExeId)
 					.getSingleResult();
 			logger.info(email);
 			tx.commit();
@@ -1718,7 +1718,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			 */
 
 			queryForRecIds = "select distinct rec_id from candidate_sales_executive";
-			List<Integer> recIdList = (List<Integer>) DbConnect.DbCon().createNativeQuery(queryForRecIds).list();
+			List<Integer> recIdList = (List<Integer>) DbConnect.DbCon().createSQLQuery(queryForRecIds).list();
 
 			for (int recruiterId : recIdList) {
 				cro = new CandidateResponseObject();
@@ -1729,9 +1729,9 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 
 				queryForRecName = "select distinct userfullname from main_users where id=+'" + recruiterId + "'";
 
-				List<Integer> candList = (List<Integer>) DbConnect.DbCon().createNativeQuery(queryForCandIds).list();
+				List<Integer> candList = (List<Integer>) DbConnect.DbCon().createSQLQuery(queryForCandIds).list();
 
-				List<String> recruiterNameList = (List<String>) DbConnect.DbCon().createNativeQuery(queryForRecName)
+				List<String> recruiterNameList = (List<String>) DbConnect.DbCon().createSQLQuery(queryForRecName)
 						.list();
 
 				if (recruiterNameList != null) {
@@ -1781,13 +1781,13 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			tx = DbConnect.DbCon().beginTransaction();
 
 			queryForCandIds = "select can_id from candidate_sales_executive where rec_id=+'" + recId + "'";
-			List<Integer> candList = (List<Integer>) DbConnect.DbCon().createNativeQuery(queryForCandIds).list();
+			List<Integer> candList = (List<Integer>) DbConnect.DbCon().createSQLQuery(queryForCandIds).list();
 
 			for (int candId : candList) {
 				candSubmissionBean = new CandSubmissionBean();
 				queryForVendors = "select vendor_id from candidate_vendor where can_id=+'" + candId + "'";
 
-				List<Integer> vendorIdList = (List<Integer>) DbConnect.DbCon().createNativeQuery(queryForVendors).list();
+				List<Integer> vendorIdList = (List<Integer>) DbConnect.DbCon().createSQLQuery(queryForVendors).list();
 
 				vendorInfoList = new ArrayList<>();
 
@@ -1862,12 +1862,12 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			tx = DbConnect.DbCon().beginTransaction();
 
 			queryForCandIds = "select can_id from candidate_sales_executive where rec_id=+'" + recId + "'";
-			List<Integer> candList = (List<Integer>) DbConnect.DbCon().createNativeQuery(queryForCandIds).list();
+			List<Integer> candList = (List<Integer>) DbConnect.DbCon().createSQLQuery(queryForCandIds).list();
 
 			for (int candId : candList) {
 				queryForVendors = "select vendor_id from candidate_vendor where can_id=+'" + candId + "'";
 
-				List<Integer> vendorIdList = (List<Integer>) DbConnect.DbCon().createNativeQuery(queryForVendors).list();
+				List<Integer> vendorIdList = (List<Integer>) DbConnect.DbCon().createSQLQuery(queryForVendors).list();
 
 				vendorInfoList = new ArrayList<>();
 
@@ -1942,7 +1942,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 
 			queryForVendors = "select vendor_id from candidate_vendor where can_id=+'" + candId + "'";
 
-			List<Integer> vendorIdList = (List<Integer>) DbConnect.DbCon().createNativeQuery(queryForVendors).list();
+			List<Integer> vendorIdList = (List<Integer>) DbConnect.DbCon().createSQLQuery(queryForVendors).list();
 
 			vendorInfoList = new ArrayList<>();
 
@@ -1955,7 +1955,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 
 				int recId = vendorInfo.getCreatedBy();
 				queryForRecName = "select userfullname from main_users where id=+'" + recId + "'";
-				List<String> recruiterNameList = (List<String>) DbConnect.DbCon().createNativeQuery(queryForRecName)
+				List<String> recruiterNameList = (List<String>) DbConnect.DbCon().createSQLQuery(queryForRecName)
 						.list();
 
 				vendorResponse.setCandidates(vendorInfo.getCandidates());
@@ -2022,8 +2022,8 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 								+ " on cr.can_id=c.id and c.deleted='0' where cr.rec_id=" + salesExeId + " ";
 					}
 
-					query = (List<Object[]>) DbConnect.DbCon().createNativeQuery(hql).list();
-					usersMinilist = DbConnect.DbCon().createNativeQuery(hql2).list();
+					query = (List<Object[]>) DbConnect.DbCon().createSQLQuery(hql).list();
+					usersMinilist = DbConnect.DbCon().createSQLQuery(hql2).list();
 					for (Object[] ob2 : usersMinilist) {
 						userList = new ArrayList<>();
 						int id = (Integer) ob2[0];
@@ -2096,11 +2096,11 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			logger.info(id1);
 			if (id1 != 0) {
 				String getSaleManIdQuery = "select reporting_manager from main_employees_summary Where user_id=:id1 ";
-				salesManId = (int) DbConnect.DbCon().createNativeQuery(getSaleManIdQuery).setParameter("id1", id1)
+				salesManId = (int) DbConnect.DbCon().createSQLQuery(getSaleManIdQuery).setParameter("id1", id1)
 						.uniqueResult();
 			}
 			String getSaleManIdName = "select id,userfullname from main_users where id=:salesManId";
-			List<Object[]> user1 = DbConnect.DbCon().createNativeQuery(getSaleManIdName)
+			List<Object[]> user1 = DbConnect.DbCon().createSQLQuery(getSaleManIdName)
 					.setParameter("salesManId", salesManId).list();
 			for (Object[] ob1 : user1) {
 				int id2 = (Integer) ob1[0];
@@ -2132,7 +2132,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			vendorLists = new ArrayList<>();
 			tx = DbConnect.DbCon().beginTransaction();
 			String hql = "select vendor_id from vendor_details";
-			List<Object[]> objectsIterator = (List<Object[]>) DbConnect.DbCon().createNativeQuery(hql).list();
+			List<Object[]> objectsIterator = (List<Object[]>) DbConnect.DbCon().createSQLQuery(hql).list();
 			Iterator<Object[]> iterator1 = objectsIterator.iterator();
 			while (iterator1.hasNext()) {
 				Object object = (Object) iterator1.next();
@@ -2141,7 +2141,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 					if (vendorId != 0) {
 						String hql1 = "select vendor_id,vendor_name,email_address,phone_no,client_name,location,rate,date_of_submission,"
 								+ "created_by,pay_type from vendor_details where vendor_id=" + vendorId + "";
-						vendorList = DbConnect.DbCon().createNativeQuery(hql1).list();
+						vendorList = DbConnect.DbCon().createSQLQuery(hql1).list();
 						for (Object[] ob : vendorList) {
 							VendorSalesExecutiveResponseBean entity1 = new VendorSalesExecutiveResponseBean();
 							int id = (Integer) ob[0];
@@ -2165,7 +2165,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 							entity1.setCreatedBy(createdBy);
 							entity1.setPayType(payType);
 							String hql2 = "select userfullname from main_users where id=:createdBy";
-							String salName = (String) DbConnect.DbCon().createNativeQuery(hql2)
+							String salName = (String) DbConnect.DbCon().createSQLQuery(hql2)
 									.setParameter("createdBy", createdBy).uniqueResult();
 							entity1.setSalExeName(salName);
 							vendorLists.add(entity1);
@@ -2206,11 +2206,11 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			query.executeUpdate();
 			DbConnect.DbCon().getTransaction();
 			hql2 = "delete from candidate_sales_executive where can_id=" + id + "";
-			query1 = DbConnect.DbCon().createNativeQuery(hql2);
+			query1 = DbConnect.DbCon().createSQLQuery(hql2);
 			query1.executeUpdate();
 			DbConnect.DbCon().getTransaction();
 			hql3 = "delete from candidate_vendor where can_id=" + id + "";
-			query2 = DbConnect.DbCon().createNativeQuery(hql3);
+			query2 = DbConnect.DbCon().createSQLQuery(hql3);
 			query2.executeUpdate();
 			DbConnect.DbCon().getTransaction();
 			tx.commit();
@@ -2234,7 +2234,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			tx = DbConnect.DbCon().beginTransaction();
 			listOfStates = new ArrayList<>();
 			String hql = "select id,state_name from tbl_states";
-			listsOfState = DbConnect.DbCon().createNativeQuery(hql).list();
+			listsOfState = DbConnect.DbCon().createSQLQuery(hql).list();
 			for (Object[] state : listsOfState) {
 				CityStateResponseBean states = new CityStateResponseBean();
 				BigInteger id = (BigInteger) state[0];
@@ -2267,7 +2267,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			tx = DbConnect.DbCon().beginTransaction();
 			listOfCities = new ArrayList<>();
 			String hql = "select id, city_name from tbl_cities where state_id=" + id + "";
-			listsOfCity = DbConnect.DbCon().createNativeQuery(hql).list();
+			listsOfCity = DbConnect.DbCon().createSQLQuery(hql).list();
 			for (Object[] city : listsOfCity) {
 				CityStateResponseBean cities = new CityStateResponseBean();
 				BigInteger cityId = (BigInteger) city[0];
@@ -2301,7 +2301,7 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 			String hql = "select distinct(cv.can_id) from candidate_vendor as cv inner join vendor_details  \r\n"
 					+ "as v on v.vendor_id=cv.vendor_id  where v.vendor_name='" + organisationName
 					+ "' and v.client_name='" + clientName + "' \r\n" + "and v.location='" + loc + "'";
-			canId = DbConnect.DbCon().createNativeQuery(hql).uniqueResult();
+			canId = DbConnect.DbCon().createSQLQuery(hql).uniqueResult();
 			if (canId != null) {
 				candId = (int) canId;
 			} else if (canId == null) {
@@ -2339,9 +2339,9 @@ public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 					queryForCandIds = "select distinct(can_id) from candidate_sales_executive where rec_id=+'" + recruiterId
 							+ "'";
 					queryForRecName = "select distinct(userfullname) from main_users where id=+'" + recruiterId + "'";
-					List<Integer> candList = (List<Integer>) DbConnect.DbCon().createNativeQuery(queryForCandIds).list();
+					List<Integer> candList = (List<Integer>) DbConnect.DbCon().createSQLQuery(queryForCandIds).list();
 
-					List<String> recruiterNameList = (List<String>) DbConnect.DbCon().createNativeQuery(queryForRecName)
+					List<String> recruiterNameList = (List<String>) DbConnect.DbCon().createSQLQuery(queryForRecName)
 							.list();
 
 					if (recruiterNameList != null) {

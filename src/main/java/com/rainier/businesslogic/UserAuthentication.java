@@ -6,7 +6,7 @@ import java.util.List;
 import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
-import org.hibernate.collection.spi.PersistentIdentifierBag;
+import org.hibernate.collection.internal.PersistentBag;
 
 import com.rainier.beans.ChangePasswordRequestBean;
 import com.rainier.beans.CommonResponseBean;
@@ -59,7 +59,7 @@ public class UserAuthentication {
 			if (!listuserRole.isEmpty()) {
 				userRole1 = listuserRole.get(0);
 				// PersistentBag type of data fetched in bag.
-				PersistentIdentifierBag bag = (PersistentIdentifierBag) userRole1.getUsers();
+				PersistentBag bag = (PersistentBag) userRole1.getUsers();
 				for (int i = 0; i <= bag.size() - 1; i++) {
 					User employee1 = (User) bag.get(i);
 					if ((employee1.getUserName().equalsIgnoreCase(emailPassword.getEmail())
@@ -208,7 +208,7 @@ public class UserAuthentication {
 		String hql = null;
 		int id = bean.getUserId();
 		hql = "select emppassword from main_users Where id=" + id + "";
-		dataBasePassWord = (String) DbConnect.DbCon().createSelectionQuery(hql).uniqueResult();
+		dataBasePassWord = (String) DbConnect.DbCon().createSQLQuery(hql).uniqueResult();
 		String currentPasssoword = generate.generate(bean.getCurrentPassword());// Here Getting Current PassWord
 		if (dataBasePassWord.equals(currentPasssoword)) {// Check For DataBase Password And CurrentPassword
 			String newPassword = generate.generate(bean.getNewPassword());// new Generating Password

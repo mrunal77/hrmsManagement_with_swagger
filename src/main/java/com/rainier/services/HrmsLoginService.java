@@ -1,5 +1,6 @@
 package com.rainier.services;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -7,6 +8,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -18,12 +22,15 @@ import com.rainier.dto.requestBean.ForgetPasswordRequest;
 import com.rainier.dto.requestBean.PassWordUpadateRequest;
 
 // @CrossOrigin
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200/,http://localhost:8080/", maxAge = 3600, allowedHeaders = "*")
+@Api("/UserService")
+@SwaggerDefinition(tags = {@Tag(name = "Common Service", description = "REST Common Service")})
 @Path("/userService")
 public class HrmsLoginService {
 
 	private static final Logger logger = Logger.getLogger(HrmsLoginService.class);
-	private static UserAuthentication userAuthentication = new UserAuthentication();
+	@Inject
+	private static UserAuthentication userAuthentication;
 
 	@Path("/login")
 	@POST

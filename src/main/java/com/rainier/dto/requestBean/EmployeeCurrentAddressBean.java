@@ -3,6 +3,7 @@ package com.rainier.dto.requestBean;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigInteger;
 
 @XmlRootElement
 public class EmployeeCurrentAddressBean {

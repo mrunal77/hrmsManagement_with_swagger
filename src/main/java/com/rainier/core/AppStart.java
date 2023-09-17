@@ -3,6 +3,7 @@ package com.rainier.core;
 
 import com.rainier.dbconfiguration.DbConnect;
 import com.rainier.services.*;
+import io.swagger.jaxrs.config.BeanConfig;
 import org.apache.log4j.Logger;
 
 import javax.ws.rs.ApplicationPath;
@@ -11,12 +12,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-@ApplicationPath(value = "hrms")
+@ApplicationPath("/api")
 public class AppStart extends Application {
     private static final Logger logger = Logger.getLogger(AppStart.class);
 
     // Constructor
     public AppStart() {
+        logger.info("Swagger Configuration......");
+        BeanConfig beanConfig = new BeanConfig();
+        beanConfig.setVersion("1.0");
+        beanConfig.setSchemes(new String[]{"http"});
+        beanConfig.setHost("localhost:8080");
+        beanConfig.setBasePath("/HRMS/api");
+        beanConfig.setResourcePackage("com.rainier");
+        beanConfig.setScan(true);
+        beanConfig.setPrettyPrint(true);
         logger.info("Application Starting......");
         try {
             logger.info("Initializing Database Connection...");
@@ -36,6 +46,7 @@ public class AppStart extends Application {
     }
 
     private Set<Class<?>> getRestClasses() {
+        logger.info("Classes Starting......");
         Set<Class<?>> resources = new java.util.HashSet<>();
         resources.add(CORSFilter.class);
         resources.add(HrmsLoginService.class);
@@ -60,6 +71,8 @@ public class AppStart extends Application {
         resources.add(HrmsPostProfileService.class);
         resources.add(HrmsBenchSalesService.class);
         resources.add(NationalityContextService.class);
+        resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
+        resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
         return resources;
     }
 

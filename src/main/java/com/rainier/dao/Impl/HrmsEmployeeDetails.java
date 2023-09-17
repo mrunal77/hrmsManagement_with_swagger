@@ -234,8 +234,8 @@ public class HrmsEmployeeDetails implements HrmsEmployeeDao {
 					visaDocuments.append(bean.getVisaDocumentId()[i]);
 			}
 			DbConnect.DbCon().beginTransaction();
-			StoredProcedureQuery query = (StoredProcedureQuery) DbConnect.DbCon().createStoredProcedureQuery("Emp_Insert");
-					query.registerStoredProcedureParameter("employeeId", String.class, ParameterMode.IN)
+			StoredProcedureQuery query = DbConnect.DbCon().createStoredProcedureQuery("Emp_Insert")
+					.registerStoredProcedureParameter("employeeId", String.class, ParameterMode.IN)
 					.registerStoredProcedureParameter("prefixId", Integer.class, ParameterMode.IN)
 					.registerStoredProcedureParameter("firstName", String.class, ParameterMode.IN)
 					.registerStoredProcedureParameter("lastName", String.class, ParameterMode.IN)
@@ -343,8 +343,8 @@ public class HrmsEmployeeDetails implements HrmsEmployeeDao {
 			}
 			logger.info(dateOfJoining);
 			DbConnect.DbCon().beginTransaction();
-			StoredProcedureQuery query = (StoredProcedureQuery) DbConnect.DbCon().createStoredProcedureQuery("Emp_Update");
-					query.registerStoredProcedureParameter("UserId", Integer.class, ParameterMode.IN)
+			StoredProcedureQuery query = DbConnect.DbCon().createStoredProcedureQuery("Emp_Update")
+					.registerStoredProcedureParameter("UserId", Integer.class, ParameterMode.IN)
 					.registerStoredProcedureParameter("Prefix_id", Integer.class, ParameterMode.IN)
 					.registerStoredProcedureParameter("Firstname", String.class, ParameterMode.IN)
 					.registerStoredProcedureParameter("Lastname", String.class, ParameterMode.IN)

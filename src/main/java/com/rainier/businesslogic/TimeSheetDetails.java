@@ -66,7 +66,7 @@ public class TimeSheetDetails {
 		boolean status = (boolean) MonthlyTSHM.get("status");
 		queryForMonthName = "select distinct(month_name) from timeSheet_add_calWeek_month where month_id="
 				+ month + "";
-		String monthName = (String) DbConnect.DbCon().createNativeQuery(queryForMonthName).uniqueResult();
+		String monthName = (String) DbConnect.DbCon().createSQLQuery(queryForMonthName).uniqueResult();
 		if (status) {
 			List<Object[]> listofMonthlyTSDetails = (List<Object[]>) MonthlyTSHM.get("monthlyList");
 			if (listofMonthlyTSDetails != null && listofMonthlyTSDetails.size() != 0) {
@@ -618,31 +618,31 @@ public class TimeSheetDetails {
 							+ employeeId + " and cal_week=" + calWeek + "";
 					queryForMonthName = "select distinct(month_name) from timeSheet_add_calWeek_month where month_id="
 							+ listofMonthlyTSDetails.get(0).getMonth() + "";
-					String monthName = (String) DbConnect.DbCon().createNativeQuery(queryForMonthName).uniqueResult();
-					Double monTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForMonTotalHours)
+					String monthName = (String) DbConnect.DbCon().createSQLQuery(queryForMonthName).uniqueResult();
+					Double monTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForMonTotalHours)
 							.uniqueResult();
-					Double tueTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForTueTotalHours)
+					Double tueTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForTueTotalHours)
 							.uniqueResult();
-					Double wedTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForWedTotalHours)
+					Double wedTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForWedTotalHours)
 							.uniqueResult();
-					Double thrTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForThrTotalHours)
+					Double thrTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForThrTotalHours)
 							.uniqueResult();
-					Double friTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForFriTotalHours)
+					Double friTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForFriTotalHours)
 							.uniqueResult();
-					Double satTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSatTotalHours)
+					Double satTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSatTotalHours)
 							.uniqueResult();
-					Double sunTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSunTotalHours)
+					Double sunTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSunTotalHours)
 							.uniqueResult();
 					Double totalHours = monTotalHours + tueTotalHours + wedTotalHours + thrTotalHours + friTotalHours
 							+ satTotalHours + sunTotalHours;
 					tsEmp.setUserId(employeeId);
 					tsEmp.setEmployeeName(employeeName);
 					tsEmp.setStartDate((Date) DbConnect.DbCon()
-							.createNativeQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
+							.createSQLQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
 									+ " and cal_week=" + calWeek + " ")
 							.uniqueResult());
 					tsEmp.setEndDate((Date) DbConnect.DbCon()
-							.createNativeQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
+							.createSQLQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
 									+ " and cal_week=" + calWeek + "")
 							.uniqueResult());
 					tsEmp.setRepManId(repId);
@@ -738,30 +738,30 @@ public class TimeSheetDetails {
 							+ employeeId + " and cal_week=" + calWeek + " and ts_year=" + year + "";
 					queryForSunTotalHours = "SELECT sum(sun_duration) FROM  tm_emp_timesheets Where emp_id="
 							+ employeeId + " and cal_week=" + calWeek + " and ts_year=" + year + "";
-					Double monTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForMonTotalHours)
+					Double monTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForMonTotalHours)
 							.uniqueResult();
-					Double tueTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForTueTotalHours)
+					Double tueTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForTueTotalHours)
 							.uniqueResult();
-					Double wedTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForWedTotalHours)
+					Double wedTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForWedTotalHours)
 							.uniqueResult();
-					Double thrTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForThrTotalHours)
+					Double thrTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForThrTotalHours)
 							.uniqueResult();
-					Double friTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForFriTotalHours)
+					Double friTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForFriTotalHours)
 							.uniqueResult();
-					Double satTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSatTotalHours)
+					Double satTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSatTotalHours)
 							.uniqueResult();
-					Double sunTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSunTotalHours)
+					Double sunTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSunTotalHours)
 							.uniqueResult();
 					Double totalHours = monTotalHours + tueTotalHours + wedTotalHours + thrTotalHours + friTotalHours
 							+ satTotalHours + sunTotalHours;
 					tsEmp.setUserId(employeeId);
 					tsEmp.setEmployeeName(employeeName);
 					tsEmp.setStartDate((Date) DbConnect
-							.DbCon().createNativeQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id="
+							.DbCon().createSQLQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id="
 									+ employeeId + " and cal_week=" + calWeek + " and ts_year=" + year + " ")
 							.uniqueResult());
 					tsEmp.setEndDate((Date) DbConnect
-							.DbCon().createNativeQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id="
+							.DbCon().createSQLQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id="
 									+ employeeId + " and cal_week=" + calWeek + " and ts_year=" + year + "")
 							.uniqueResult());
 					tsEmp.setWeekNo(listofMonthlyTSDetails.get(0).getWeekNo());
@@ -964,31 +964,31 @@ public class TimeSheetDetails {
 						queryForSunTotalHours = "SELECT sum(sun_duration) FROM  tm_emp_timesheets Where emp_id="
 								+ employeeId + " and cal_week=" + calWeek + " and ts_month=" + month + " and ts_year="
 								+ year + "";
-						Double monTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForMonTotalHours)
+						Double monTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForMonTotalHours)
 								.uniqueResult();
-						Double tueTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForTueTotalHours)
+						Double tueTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForTueTotalHours)
 								.uniqueResult();
-						Double wedTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForWedTotalHours)
+						Double wedTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForWedTotalHours)
 								.uniqueResult();
-						Double thrTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForThrTotalHours)
+						Double thrTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForThrTotalHours)
 								.uniqueResult();
-						Double friTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForFriTotalHours)
+						Double friTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForFriTotalHours)
 								.uniqueResult();
-						Double satTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSatTotalHours)
+						Double satTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSatTotalHours)
 								.uniqueResult();
-						Double sunTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSunTotalHours)
+						Double sunTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSunTotalHours)
 								.uniqueResult();
 						Double totalHours = monTotalHours + tueTotalHours + wedTotalHours + thrTotalHours
 								+ friTotalHours + satTotalHours + sunTotalHours;
 						tsEmp.setUserId(employeeId);
 						tsEmp.setEmployeeName(employeeName);
 						tsEmp.setStartDate((Date) DbConnect.DbCon()
-								.createNativeQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
+								.createSQLQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
 										+ " and cal_week=" + calWeek + " and ts_month=" + month + " and ts_year=" + year
 										+ "")
 								.uniqueResult());
 						tsEmp.setEndDate((Date) DbConnect.DbCon()
-								.createNativeQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
+								.createSQLQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
 										+ " and cal_week=" + calWeek + " and ts_month=" + month + " and ts_year=" + year
 										+ "")
 								.uniqueResult());
@@ -1057,7 +1057,7 @@ public class TimeSheetDetails {
 							timeSheet.setUserId(empId);
 							queryForMonthName = "select distinct(month_name) from timeSheet_add_calWeek_month where month_id="
 									+ month + "";
-							String monthName = (String) DbConnect.DbCon().createNativeQuery(queryForMonthName)
+							String monthName = (String) DbConnect.DbCon().createSQLQuery(queryForMonthName)
 									.uniqueResult();
 							timeSheet.setMonTotalHours(objToFloat(row[0]));
 							timeSheet.setTueTotalHours(objToFloat(row[1]));
@@ -1148,7 +1148,7 @@ public class TimeSheetDetails {
 							timeSheet.setUserId(empId);
 							queryForMonthName = "select distinct(month_name) from timeSheet_add_calWeek_month where month_id="
 									+ month + "";
-							String monthName = (String) DbConnect.DbCon().createNativeQuery(queryForMonthName)
+							String monthName = (String) DbConnect.DbCon().createSQLQuery(queryForMonthName)
 									.uniqueResult();
 							timeSheet.setMonTotalHours(objToFloat(row[0]));
 							timeSheet.setMonDate(lisofTimeSheet.get(0).getMon_date());
@@ -1302,31 +1302,31 @@ public class TimeSheetDetails {
 							+ employeeId + " and ts_month=" + month + " and ts_year=" + year + "";
 					queryForMonthName = "select distinct(month_name) from timeSheet_add_calWeek_month where month_id="
 							+ month + "";
-					String monthName = (String) DbConnect.DbCon().createNativeQuery(queryForMonthName).uniqueResult();
-					Double monTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForMonTotalHours)
+					String monthName = (String) DbConnect.DbCon().createSQLQuery(queryForMonthName).uniqueResult();
+					Double monTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForMonTotalHours)
 							.uniqueResult();
-					Double tueTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForTueTotalHours)
+					Double tueTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForTueTotalHours)
 							.uniqueResult();
-					Double wedTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForWedTotalHours)
+					Double wedTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForWedTotalHours)
 							.uniqueResult();
-					Double thrTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForThrTotalHours)
+					Double thrTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForThrTotalHours)
 							.uniqueResult();
-					Double friTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForFriTotalHours)
+					Double friTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForFriTotalHours)
 							.uniqueResult();
-					Double satTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSatTotalHours)
+					Double satTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSatTotalHours)
 							.uniqueResult();
-					Double sunTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSunTotalHours)
+					Double sunTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSunTotalHours)
 							.uniqueResult();
 					Double totalHours = monTotalHours + tueTotalHours + wedTotalHours + thrTotalHours + friTotalHours
 							+ satTotalHours + sunTotalHours;
 					tsEmp.setUserId(employeeId);
 					tsEmp.setEmployeeName(employeeName);
 					tsEmp.setStartDate((Date) DbConnect
-							.DbCon().createNativeQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id="
+							.DbCon().createSQLQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id="
 									+ employeeId + " and ts_month=" + month + " and ts_year=" + year + " ")
 							.uniqueResult());
 					tsEmp.setEndDate((Date) DbConnect
-							.DbCon().createNativeQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id="
+							.DbCon().createSQLQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id="
 									+ employeeId + " and ts_month=" + month + " and ts_year=" + year + "")
 							.uniqueResult());
 					tsEmp.setWeekNo(listofMonthlyTSDetails.get(0).getWeekNo());
@@ -1417,31 +1417,31 @@ public class TimeSheetDetails {
 							+ empId + " and ts_month=" + month + " and ts_year=" + year + "";
 					queryForMonthName = "select distinct(month_name) from timeSheet_add_calWeek_month where month_id="
 							+ month + "";
-					String monthName = (String) DbConnect.DbCon().createNativeQuery(queryForMonthName).uniqueResult();
-					Double monTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForMonTotalHours)
+					String monthName = (String) DbConnect.DbCon().createSQLQuery(queryForMonthName).uniqueResult();
+					Double monTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForMonTotalHours)
 							.uniqueResult();
-					Double tueTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForTueTotalHours)
+					Double tueTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForTueTotalHours)
 							.uniqueResult();
-					Double wedTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForWedTotalHours)
+					Double wedTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForWedTotalHours)
 							.uniqueResult();
-					Double thrTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForThrTotalHours)
+					Double thrTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForThrTotalHours)
 							.uniqueResult();
-					Double friTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForFriTotalHours)
+					Double friTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForFriTotalHours)
 							.uniqueResult();
-					Double satTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSatTotalHours)
+					Double satTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSatTotalHours)
 							.uniqueResult();
-					Double sunTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSunTotalHours)
+					Double sunTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSunTotalHours)
 							.uniqueResult();
 					Double totalHours = monTotalHours + tueTotalHours + wedTotalHours + thrTotalHours + friTotalHours
 							+ satTotalHours + sunTotalHours;
 					tsEmp.setUserId(empId);
 					tsEmp.setEmployeeName(employeeName);
 					tsEmp.setStartDate((Date) DbConnect
-							.DbCon().createNativeQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id="
+							.DbCon().createSQLQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id="
 									+ employeeId + " and ts_month=" + month + " and ts_year=" + year + " ")
 							.uniqueResult());
 					tsEmp.setEndDate((Date) DbConnect
-							.DbCon().createNativeQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id="
+							.DbCon().createSQLQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id="
 									+ employeeId + " and ts_month=" + month + " and ts_year=" + year + "")
 							.uniqueResult());
 					tsEmp.setWeekNo(listofMonthlyTSDetails.get(0).getWeekNo());
@@ -1572,30 +1572,30 @@ public class TimeSheetDetails {
 							+ employeeId + "";
 					queryForSunTotalHours = "SELECT sum(sun_duration) FROM  tm_emp_timesheets Where emp_id="
 							+ employeeId + "";
-					Double monTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForMonTotalHours)
+					Double monTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForMonTotalHours)
 							.uniqueResult();
-					Double tueTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForTueTotalHours)
+					Double tueTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForTueTotalHours)
 							.uniqueResult();
-					Double wedTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForWedTotalHours)
+					Double wedTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForWedTotalHours)
 							.uniqueResult();
-					Double thrTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForThrTotalHours)
+					Double thrTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForThrTotalHours)
 							.uniqueResult();
-					Double friTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForFriTotalHours)
+					Double friTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForFriTotalHours)
 							.uniqueResult();
-					Double satTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSatTotalHours)
+					Double satTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSatTotalHours)
 							.uniqueResult();
-					Double sunTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSunTotalHours)
+					Double sunTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSunTotalHours)
 							.uniqueResult();
 					Double totalHours = monTotalHours + tueTotalHours + wedTotalHours + thrTotalHours + friTotalHours
 							+ satTotalHours + sunTotalHours;
 					tsEmp.setUserId(employeeId);
 					tsEmp.setEmployeeName(employeeName);
 					tsEmp.setStartDate((Date) DbConnect.DbCon()
-							.createNativeQuery(
+							.createSQLQuery(
 									"SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId + "")
 							.uniqueResult());
 					tsEmp.setEndDate((Date) DbConnect.DbCon()
-							.createNativeQuery(
+							.createSQLQuery(
 									"SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId + "")
 							.uniqueResult());
 					tsEmp.setWeekNo(listofMonthlyTSDetails.get(0).getWeekNo());
@@ -1682,30 +1682,30 @@ public class TimeSheetDetails {
 								+ employeeId + " and cal_week=" + calWeek + "";
 						queryForSunTotalHours = "SELECT sum(sun_duration) FROM  tm_emp_timesheets Where emp_id="
 								+ employeeId + " and cal_week=" + calWeek + "";
-						Double monTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForMonTotalHours)
+						Double monTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForMonTotalHours)
 								.uniqueResult();
-						Double tueTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForTueTotalHours)
+						Double tueTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForTueTotalHours)
 								.uniqueResult();
-						Double wedTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForWedTotalHours)
+						Double wedTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForWedTotalHours)
 								.uniqueResult();
-						Double thrTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForThrTotalHours)
+						Double thrTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForThrTotalHours)
 								.uniqueResult();
-						Double friTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForFriTotalHours)
+						Double friTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForFriTotalHours)
 								.uniqueResult();
-						Double satTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSatTotalHours)
+						Double satTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSatTotalHours)
 								.uniqueResult();
-						Double sunTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSunTotalHours)
+						Double sunTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSunTotalHours)
 								.uniqueResult();
 						Double totalHours = monTotalHours + tueTotalHours + wedTotalHours + thrTotalHours
 								+ friTotalHours + satTotalHours + sunTotalHours;
 						tsEmp.setUserId(employeeId);
 						tsEmp.setEmployeeName(employeeName);
 						tsEmp.setStartDate((Date) DbConnect.DbCon()
-								.createNativeQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
+								.createSQLQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
 										+ " and cal_week=" + calWeek + "")
 								.uniqueResult());
 						tsEmp.setEndDate((Date) DbConnect.DbCon()
-								.createNativeQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
+								.createSQLQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
 										+ " and cal_week=" + calWeek + "")
 								.uniqueResult());
 						tsEmp.setRepManId(repId);
@@ -1790,30 +1790,30 @@ public class TimeSheetDetails {
 								+ employeeId + " and cal_week=" + calWeek + " and ts_year="+year+" and ts_month="+month+"";
 						queryForSunTotalHours = "SELECT sum(sun_duration) FROM  tm_emp_timesheets Where emp_id="
 								+ employeeId + " and cal_week=" + calWeek + " and ts_year="+year+" and ts_month="+month+"";
-						Double monTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForMonTotalHours)
+						Double monTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForMonTotalHours)
 								.uniqueResult();
-						Double tueTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForTueTotalHours)
+						Double tueTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForTueTotalHours)
 								.uniqueResult();
-						Double wedTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForWedTotalHours)
+						Double wedTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForWedTotalHours)
 								.uniqueResult();
-						Double thrTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForThrTotalHours)
+						Double thrTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForThrTotalHours)
 								.uniqueResult();
-						Double friTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForFriTotalHours)
+						Double friTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForFriTotalHours)
 								.uniqueResult();
-						Double satTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSatTotalHours)
+						Double satTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSatTotalHours)
 								.uniqueResult();
-						Double sunTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSunTotalHours)
+						Double sunTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSunTotalHours)
 								.uniqueResult();
 						Double totalHours = monTotalHours + tueTotalHours + wedTotalHours + thrTotalHours
 								+ friTotalHours + satTotalHours + sunTotalHours;
 						tsEmp.setUserId(employeeId);
 						tsEmp.setEmployeeName(employeeName);
 						tsEmp.setStartDate((Date) DbConnect.DbCon()
-								.createNativeQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
+								.createSQLQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
 										+ " and cal_week=" + calWeek + " and ts_year="+year+" and ts_month="+month+"")
 								.uniqueResult());
 						tsEmp.setEndDate((Date) DbConnect.DbCon()
-								.createNativeQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
+								.createSQLQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
 										+ " and cal_week=" + calWeek + " and ts_year="+year+" and ts_month="+month+"")
 								.uniqueResult());
 						tsEmp.setRepManId(repId);
@@ -1912,32 +1912,32 @@ public class TimeSheetDetails {
 								+ year + "";
 						queryForMonthName = "select distinct(month_name) from timeSheet_add_calWeek_month where month_id="
 								+ month + "";
-						String monthName = (String) DbConnect.DbCon().createNativeQuery(queryForMonthName).uniqueResult();
-						Double monTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForMonTotalHours)
+						String monthName = (String) DbConnect.DbCon().createSQLQuery(queryForMonthName).uniqueResult();
+						Double monTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForMonTotalHours)
 								.uniqueResult();
-						Double tueTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForTueTotalHours)
+						Double tueTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForTueTotalHours)
 								.uniqueResult();
-						Double wedTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForWedTotalHours)
+						Double wedTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForWedTotalHours)
 								.uniqueResult();
-						Double thrTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForThrTotalHours)
+						Double thrTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForThrTotalHours)
 								.uniqueResult();
-						Double friTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForFriTotalHours)
+						Double friTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForFriTotalHours)
 								.uniqueResult();
-						Double satTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSatTotalHours)
+						Double satTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSatTotalHours)
 								.uniqueResult();
-						Double sunTotalHours = (Double) DbConnect.DbCon().createNativeQuery(queryForSunTotalHours)
+						Double sunTotalHours = (Double) DbConnect.DbCon().createSQLQuery(queryForSunTotalHours)
 								.uniqueResult();
 						Double totalHours = monTotalHours + tueTotalHours + wedTotalHours + thrTotalHours
 								+ friTotalHours + satTotalHours + sunTotalHours;
 						tsEmp.setUserId(employeeId);
 						tsEmp.setEmployeeName(employeeName);
 						tsEmp.setStartDate((Date) DbConnect.DbCon()
-								.createNativeQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
+								.createSQLQuery("SELECT max(sun_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
 										+ " and cal_week=" + calWeek + " and ts_month=" + month + " and ts_year=" + year
 										+ "")
 								.uniqueResult());
 						tsEmp.setEndDate((Date) DbConnect.DbCon()
-								.createNativeQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
+								.createSQLQuery("SELECT max(sat_date) FROM tm_emp_timesheets Where emp_id=" + employeeId
 										+ " and cal_week=" + calWeek + " and ts_month=" + month + " and ts_year=" + year
 										+ "")
 								.uniqueResult());
