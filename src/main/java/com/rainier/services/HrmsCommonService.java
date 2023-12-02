@@ -13,7 +13,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = "*")
+
 @Path("/common")
 @Api("/Common Service")
 @SwaggerDefinition(tags = {@Tag(name = "Common Service", description = "REST Common Service")})

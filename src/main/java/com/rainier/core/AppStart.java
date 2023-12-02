@@ -24,13 +24,13 @@ public class AppStart extends Application {
         beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setHost("localhost:8080");
         beanConfig.setBasePath("/HRMS/api");
-        beanConfig.setResourcePackage("com.rainier");
+        beanConfig.setResourcePackage("com.rainier.services");
         beanConfig.setScan(true);
         beanConfig.setPrettyPrint(true);
         logger.info("Application Starting......");
         try {
             logger.info("Initializing Database Connection...");
-           DbConnect.DbCon().beginTransaction();
+            DbConnect.DbCon().beginTransaction();
             DbConnect.DbCon().createNativeQuery("select 1");
             // System.out.println(DbConnect.dbSessionFactory().getCurrentSession().isOpen());
             DbConnect.DbCon().getTransaction().commit();

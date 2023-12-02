@@ -5,6 +5,7 @@ window.onload = function() {
   window.ui = SwaggerUIBundle({
     url: "http://localhost:8080/HRMS/api/swagger.json",
     dom_id: '#swagger-ui',
+    docExpansion: 'none',
     deepLinking: true,
     presets: [
       SwaggerUIBundle.presets.apis,

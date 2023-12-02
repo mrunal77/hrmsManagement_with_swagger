@@ -2,11 +2,15 @@ package com.rainier.services;
 
 import com.rainier.businesslogic.EmployeeProfessionalDetails;
 import com.rainier.utility.FileUploader;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -18,6 +22,8 @@ import java.text.SimpleDateFormat;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 @Path("professionalDetails")
+@Api("/professionalDetails")
+@SwaggerDefinition(tags = {@Tag(name = "professionalDetails", description = "professionalDetails")})
 public class HrmsEmployeeProfessionalDetailsService {
 
     final static Logger logger = Logger.getLogger(HrmsEmployeeDetailsService.class);

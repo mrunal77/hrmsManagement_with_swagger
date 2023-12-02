@@ -8,6 +8,9 @@ import com.rainier.dao.Impl.ClientDaoImpl;
 import com.rainier.dto.requestBean.ClientRequestBean;
 import com.rainier.dto.responseBean.ClientResponseBean;
 import com.rainier.dto.responseBean.CommonResponseBean;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -15,7 +18,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
+@Api("/clientService")
+@SwaggerDefinition(tags = {@Tag(name = "clientService", description = "clientService")})
 @Path("clientService")
 public class HrmsClientService {
 

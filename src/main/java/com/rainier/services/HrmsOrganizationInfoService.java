@@ -3,12 +3,16 @@ package com.rainier.services;
 import com.rainier.businesslogic.OrganizationInformation;
 import com.rainier.dto.requestBean.OrganizationInfoRequestBean;
 import com.rainier.utility.FileUploader;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.glassfish.jersey.media.multipart.FormDataBodyPart;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -18,10 +22,11 @@ import java.io.InputStream;
 // @CrossOrigin(maxAge = 3600, allowedHeaders = "*")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 @Path("Organization")
+@Api("/Organization")
+@SwaggerDefinition(tags = {@Tag(name = "Organization", description = "Organization")})
 public class HrmsOrganizationInfoService {
     final static Logger logger = Logger.getLogger(HrmsOrganizationInfoService.class);
-
-    private static OrganizationInformation db = new OrganizationInformation();
+    private OrganizationInformation db = new OrganizationInformation();
 
     @Path("saveUpdateOrganizationInfo")
     @POST

@@ -3,29 +3,33 @@ package com.rainier.services;
 import com.rainier.beans.*;
 import com.rainier.businesslogic.EmployeeDetailsSummary;
 import com.rainier.utility.FileUploader;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.InputStream;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 @Path("Employees")
+@Api("/Employees")
+@SwaggerDefinition(tags = {@Tag(name = "Employees", description = "Employees")})
 public class HrmsEmployeeDetailsService {
 
 	final static Logger logger = Logger.getLogger(HrmsEmployeeDetailsService.class);
-	private static EmployeeDetailsSummary db = new EmployeeDetailsSummary();
-	private static FileUploader upload = new FileUploader();
+	private EmployeeDetailsSummary db = new EmployeeDetailsSummary();
+	private FileUploader upload = new FileUploader();
 
 	@Path("/addEmployee")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	@POST
 	public Response saveEmployee(EmployeeRequestBean bean) {
 		if (bean != null) {
@@ -39,7 +43,6 @@ public class HrmsEmployeeDetailsService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@POST
-	@CrossOrigin
 	public Response updateEmployee(EmployeeRequestBean bean) {
 		if (bean != null) {
 			return db.updateEmployeeOfficialDetails(bean);
@@ -50,7 +53,6 @@ public class HrmsEmployeeDetailsService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	@Path("/getEmpOfficialInfo")
 	public Response getEmpList(@QueryParam(value = "roleId") int roleId, @QueryParam(value = "menuId") int menuId,
 			@QueryParam(value = "userId") int userId, @QueryParam("filter") String filter) {
@@ -60,7 +62,6 @@ public class HrmsEmployeeDetailsService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	@Path("/getBUDUEmpList")
 	public Response getBUDUEmpList(@QueryParam(value = "businessunitId") int businessunitId,
 			@QueryParam(value = "departmentId") int departmentId) {
@@ -72,7 +73,6 @@ public class HrmsEmployeeDetailsService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	@Path("/addEmployeeLeaveCount")
 	public Response getEmpLeave(LeaveAllottedRequestBean leaveBean) {
 		logger.info("entered into getEmpLeave service class method..");
@@ -103,7 +103,6 @@ public class HrmsEmployeeDetailsService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/GetEmployeeProfile")
-	@CrossOrigin
 	public Response getEmpProfiles(@QueryParam(value = "employeeId") String employeeId) {
 		logger.info("entered into getEmpProfiles service class method..");
 		return db.getEmployeeProfile(employeeId);
@@ -112,7 +111,6 @@ public class HrmsEmployeeDetailsService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("getEmployeeId")
-	@CrossOrigin
 	public Response autoGenerateEmployeeId() {
 		logger.info("entered into autoGenerateEmployeeId service class method..");
 		return db.employeeIdAutoGeneration();
@@ -123,7 +121,6 @@ public class HrmsEmployeeDetailsService {
 	@Path("savePersonalDetails")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response savePersonalDetails(PersonalDetailsRequestBean bean) {
 		if (bean != null)
 			return db.savePersonalDetails(bean);
@@ -231,8 +228,6 @@ public class HrmsEmployeeDetailsService {
 	@Path("/getEmpOfficialInfoAddedByHR")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@CrossOrigin
-
 	public Response getEmpList(@QueryParam("hrManagerName") String hrManagerName, @QueryParam("roleId") int roleId,
 			@QueryParam("menuId") int menuId) {
 		logger.info("entered into getEmpList service class method..");
@@ -260,7 +255,6 @@ public class HrmsEmployeeDetailsService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response softDeleteEmp(@QueryParam("userId") int userId) {
 		return db.softDeleteResponse(userId);
 	}
@@ -268,7 +262,6 @@ public class HrmsEmployeeDetailsService {
 	@Path("/getAllInActiveEmp")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response fetchAllInActive() {
 		return db.getAllInActiveEmp();
 	}
@@ -277,7 +270,6 @@ public class HrmsEmployeeDetailsService {
 	@Path("/getAllEmpByRepId")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@CrossOrigin
 	public Response getAllEmpByRepId(@QueryParam("repId") int repId) {
 		return db.getAllEmpByRepId(repId);
 	}

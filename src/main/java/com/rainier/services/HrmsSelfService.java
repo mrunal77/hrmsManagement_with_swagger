@@ -7,9 +7,13 @@ import com.rainier.beans.TimeSheet;
 import com.rainier.beans.TimeSheetAddCalWeekMonthBean;
 import com.rainier.beans.TimeSheetDailyWork;
 import com.rainier.businesslogic.SelfServices;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -17,6 +21,8 @@ import javax.ws.rs.core.Response;
 // @CrossOrigin(maxAge = 3600, allowedHeaders = "*")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 @Path("/Self")
+@Api("/Self")
+@SwaggerDefinition(tags = {@Tag(name = "Self", description = "Self")})
 public class HrmsSelfService {
 	final static Logger logger = Logger.getLogger(HrmsSelfService.class);
 	private static SelfServices ss = new SelfServices();

@@ -4,14 +4,20 @@ import com.rainier.businesslogic.ProjectBU;
 import com.rainier.dto.requestBean.DefaultTaskBean;
 import com.rainier.dto.requestBean.ProjectEmployeesRequestBean;
 import com.rainier.dto.requestBean.ProjectRequestBean;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 @Path("projectService")
+@Api("/projectService")
+@SwaggerDefinition(tags = {@Tag(name = "projectService", description = "projectService")})
 public class HrmsProjectService {
 	private static final Logger logger = Logger.getLogger(HrmsProjectService.class);
 	private static ProjectBU bu = new ProjectBU();

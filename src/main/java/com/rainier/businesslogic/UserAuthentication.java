@@ -208,7 +208,7 @@ public class UserAuthentication {
 		String hql = null;
 		int id = bean.getUserId();
 		hql = "select emppassword from main_users Where id=" + id + "";
-		dataBasePassWord = (String) DbConnect.DbCon().createSQLQuery(hql).uniqueResult();
+		dataBasePassWord = (String) DbConnect.DbCon().createNativeQuery(hql).uniqueResult();
 		String currentPasssoword = generate.generate(bean.getCurrentPassword());// Here Getting Current PassWord
 		if (dataBasePassWord.equals(currentPasssoword)) {// Check For DataBase Password And CurrentPassword
 			String newPassword = generate.generate(bean.getNewPassword());// new Generating Password
@@ -216,7 +216,7 @@ public class UserAuthentication {
 				responseBean.setStatus(false);
 				responseBean.setMessage("Your Current Password  is Not same, can't be update.");
 			} else if (userAuthentication.updateCurrentPassword(currentPasssoword, newPassword,
-					bean.getUserId()) == true) {
+                    bean.getUserId())) {
 				responseBean.setStatus(true);
 				responseBean.setMessage("Your Password Changed Successfully.");
 			} else {
@@ -233,7 +233,7 @@ public class UserAuthentication {
 		logger.info("entered into forgetPassWord() method of business logic. ");
 		ForgetPasswordResponse response = new ForgetPasswordResponse();
 		String empMail = bean.getEmailAddress();
-		if (empMail.length() == 0) {
+		if (empMail.isEmpty()) {
 			response.setSatus(false);
 			response.setMessage("Please Provide EmailAddress To Forget The Password");
 			return Response.ok().entity(response).build();
@@ -274,8 +274,8 @@ public class UserAuthentication {
 		logger.info("Entered into updatePassWord() "); 
 		UpdatePasswordResponse response=new UpdatePasswordResponse();
 		String newPassword=generate.generate(bean.getNewPassWord());
-		if(newPassword.equals(generate.generate(bean.getConfirmPassword()))==true) {
-			if(userAuthentication.updatePassword(bean.getEmail(), newPassword)==true){
+		if(newPassword.equals(generate.generate(bean.getConfirmPassword()))) {
+			if(userAuthentication.updatePassword(bean.getEmail(), newPassword)){
 				response.setStatus(true);
 				response.setMessage("Password Update Successfully");
 				return Response.ok().entity(response).build();

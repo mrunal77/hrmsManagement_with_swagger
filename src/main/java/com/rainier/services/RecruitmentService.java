@@ -2,6 +2,7 @@ package com.rainier.services;
 
 import java.io.InputStream;
 
+import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -13,6 +14,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.glassfish.jersey.media.multipart.FormDataBodyPart;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -33,11 +37,12 @@ import com.rainier.utility.FileUploader;
 //@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 @Path("/Recruitment")
-
+@Api("/Recruitment")
+@SwaggerDefinition(tags = {@Tag(name = "Recruitment", description = "Recruitment")})
 public class RecruitmentService {
 	public static Logger logger = Logger.getLogger(RecruitmentService.class);
-	RecruitmentPortal portal = new RecruitmentPortal();
-	private static FileUploader upload = new FileUploader();
+	private RecruitmentPortal portal = new RecruitmentPortal();
+	private FileUploader upload = new FileUploader();
 
 	@Path("/Vacancies")
 	@POST

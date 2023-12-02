@@ -2,19 +2,24 @@ package com.rainier.services;
 
 import com.rainier.beans.DU_RequestBean;
 import com.rainier.businesslogic.DepartmentUnits;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/Organization")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
+@Path("/Department")
+@Api("/Department")
+@SwaggerDefinition(tags = {@Tag(name = "Department", description = "Department")})
 public class HrmsDepartmentService {
 
 	final static Logger logger = Logger.getLogger(HrmsDepartmentService.class);
-	final static DepartmentUnits du = new DepartmentUnits();
+	private DepartmentUnits du = new DepartmentUnits();
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -30,7 +35,6 @@ public class HrmsDepartmentService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/InsertDUData")
-	@CrossOrigin
 	public Response insertDepartment(DU_RequestBean duRequestBean) {
 		try {
 		// System.out.println("Request Got");
@@ -48,7 +52,6 @@ public class HrmsDepartmentService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/updateDepartmentDetails")
-	@CrossOrigin
 	public Response updateDepartment(DU_RequestBean duRequestBean) {
 		try {
 			// // // // System.out.println("Request Got");
@@ -66,7 +69,6 @@ public class HrmsDepartmentService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/deleteDepartmentDetails")
-	@CrossOrigin
 	public Response Delete(@QueryParam(value = "id") int id, @QueryParam(value = "userId") int userId) {
 		logger.info("Entered into Delete() and deleted. ");
 		return du.deleteDepartment(id, userId);
@@ -77,7 +79,6 @@ public class HrmsDepartmentService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getDUbasedOnBu")
-	@CrossOrigin
 	public Response fetchDUbasedBu(@QueryParam(value = "businessUnitId") Integer businessUnitId) {
 		logger.info("Entered into fetchDUbasedBu()");
 		return du.getBUDUInfo(businessUnitId);

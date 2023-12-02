@@ -29,8 +29,7 @@ import com.rainier.dto.requestBean.PassWordUpadateRequest;
 public class HrmsLoginService {
 
 	private static final Logger logger = Logger.getLogger(HrmsLoginService.class);
-	@Inject
-	private static UserAuthentication userAuthentication;
+	private static UserAuthentication userAuthentication = new UserAuthentication();
 
 	@Path("/login")
 	@POST

@@ -2,6 +2,7 @@ package com.rainier.services;
 
 import java.io.InputStream;
 
+import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -12,6 +13,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.glassfish.jersey.media.multipart.FormDataBodyPart;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -29,7 +33,8 @@ import com.rainier.dto.requestBean.CandidateSubmissionCount;
 import com.rainier.utility.FileUploadUtility;
 
 @Path("/BenchSales")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
+@Api("/BenchSales")
+@SwaggerDefinition(tags = {@Tag(name = "BenchSales", description = "REST BenchSales")})
 public class HrmsBenchSalesService {
 
 	public static Logger logger = Logger.getLogger(HrmsBenchSalesService.class);

@@ -5,15 +5,21 @@ import com.rainier.beans.MainCountriesBean;
 import com.rainier.beans.MainStatesBean;
 import com.rainier.beans.MainTimezoneBean;
 import com.rainier.businesslogic.LocationDetails;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 @Path("/Location")
+@Api("/Location")
+@SwaggerDefinition(tags = {@Tag(name = "Location", description = "Location")})
 public class HrmsLocationService {
 
 	private static final Logger logger = Logger.getLogger(HrmsLocationService.class);

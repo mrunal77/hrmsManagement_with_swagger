@@ -5,9 +5,13 @@ import com.rainier.businesslogic.OnBoardingBusinessLogic;
 import com.rainier.dto.requestBean.EmployeeCurrentAddressBean;
 import com.rainier.dto.requestBean.OnBoardingJobDetailsRequestBean;
 import com.rainier.dto.requestBean.OnboardingConfirmEmailRequestBean;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -16,6 +20,8 @@ import javax.ws.rs.core.Response;
 // @CrossOrigin(maxAge = 3600, allowedHeaders = "*")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 @Path("/Onboarding")
+@Api("/Onboarding")
+@SwaggerDefinition(tags = {@Tag(name = "Onboarding", description = "Onboarding")})
 public class OnBoardingServices {
     private final static Logger logger = Logger.getLogger(OnBoardingServices.class);
     private static EmployeeProfessionalDetails details = new EmployeeProfessionalDetails();

@@ -3,15 +3,20 @@ package com.rainier.services;
 import com.rainier.beans.BU_RequestBean;
 import com.rainier.beans.Main_businessunitsBean;
 import com.rainier.businesslogic.BusinessUnits;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/Organization")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
+@Api("/Organization")
+@SwaggerDefinition(tags = {@Tag(name = "Organization", description = "Organization")})
 public class HrmsBusinessService {
 
 	final static Logger logger = Logger.getLogger(HrmsBusinessService.class);

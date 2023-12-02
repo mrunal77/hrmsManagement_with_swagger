@@ -2,6 +2,7 @@ package com.rainier.services;
 
 import java.io.InputStream;
 
+import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -13,6 +14,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
@@ -30,6 +34,8 @@ import com.rainier.businesslogic.BackgroundCheckDetails;
 import com.rainier.utility.FileUploader;
 
 @Path("/BackgroundCheck")
+@Api("/BackgroundCheck")
+@SwaggerDefinition(tags = {@Tag(name = "BackgroundCheck", description = "REST BackgroundCheck")})
 public class HrmsBackgroundVerificationService {
 	private static FileUploader upload = new FileUploader();
 

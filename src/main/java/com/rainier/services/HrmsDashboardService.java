@@ -2,9 +2,13 @@ package com.rainier.services;
 
 import com.rainier.beans.DashboardBean;
 import com.rainier.businesslogic.Dashboard;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,11 +16,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
+
 @Path("/Dashboard")
+@Api("/Dashboard")
+@SwaggerDefinition(tags = {@Tag(name = "Dashboard", description = "Dashboard")})
 public class HrmsDashboardService {
 	final static Logger logger = Logger.getLogger(HrmsDashboardService.class);
-	final static Dashboard dash = new Dashboard();
+	private static Dashboard dash = new Dashboard();
 
 	@Path("/HomePage")
 	@POST

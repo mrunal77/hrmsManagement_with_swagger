@@ -4,9 +4,13 @@ import com.rainier.beans.MainCitiesBean;
 import com.rainier.beans.MainCountriesBean;
 import com.rainier.beans.MainStatesBean;
 import com.rainier.businesslogic.SiteConfig;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -14,6 +18,8 @@ import javax.ws.rs.core.Response;
 @Path("/SiteConfig")
 // @CrossOrigin(maxAge = 3600, allowedHeaders = "*")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
+@Api("/SiteConfig")
+@SwaggerDefinition(tags = {@Tag(name = "SiteConfig", description = "SiteConfig")})
 public class HrmsSiteConfig {
 
 	final static Logger logger = Logger.getLogger(HrmsSiteConfig.class);
