@@ -14,8 +14,30 @@ window.onload = function() {
     plugins: [
       SwaggerUIBundle.plugins.DownloadUrl
     ],
-    layout: "StandaloneLayout"
+    layout: "StandaloneLayout",
+    requestInterceptor: (req) => {
+                    const token = localStorage.getItem('jwtToken');
+                    if (token) {
+                        req.headers.Authorization = `Bearer ${token}`;
+                    }
+                    return req;
+                }
   });
 
   //</editor-fold>
 };
+
+function addAuthorizeButton() {
+        const authBtn = document.createElement('button');
+        authBtn.innerText = 'Authorize';
+        authBtn.onclick = () => {
+            const token = prompt('Enter JWT Token:');
+            if (token) {
+                localStorage.setItem('jwtToken', token);
+                alert('Token stored successfully!');
+            }
+        };
+        document.getElementById('swagger-ui').prepend(authBtn);
+    }
+
+    document.addEventListener('DOMContentLoaded', addAuthorizeButton);
