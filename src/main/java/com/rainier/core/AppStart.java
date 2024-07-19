@@ -4,6 +4,9 @@ package com.rainier.core;
 import com.rainier.dbconfiguration.DbConnect;
 import com.rainier.services.*;
 import io.swagger.jaxrs.config.BeanConfig;
+import io.swagger.models.Swagger;
+import io.swagger.models.auth.ApiKeyAuthDefinition;
+import io.swagger.models.auth.In;
 import org.apache.log4j.Logger;
 
 import javax.ws.rs.ApplicationPath;
@@ -27,6 +30,16 @@ public class AppStart extends Application {
         beanConfig.setResourcePackage("com.rainier.services");
         beanConfig.setScan(true);
         beanConfig.setPrettyPrint(true);
+
+        // Add JWT Authentication
+        Swagger swagger = new io.swagger.models.Swagger();
+        ApiKeyAuthDefinition apiKeyAuthDefinition = new ApiKeyAuthDefinition();
+        apiKeyAuthDefinition.setName("Authorization");
+        apiKeyAuthDefinition.setIn(In.HEADER);
+        swagger.addSecurityDefinition("JWT", apiKeyAuthDefinition);
+
+        beanConfig.configure(swagger);
+
         logger.info("Application Starting......");
         try {
             logger.info("Initializing Database Connection...");
