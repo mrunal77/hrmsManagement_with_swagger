@@ -1,20 +1,14 @@
 package com.rainier.services;
 
-import com.rainier.beans.CurrentWeekDatesResponse;
-import com.rainier.beans.CurrentWeekRequest;
-import com.rainier.beans.SaveTimesheetRequestBean;
-import com.rainier.beans.TimeSheetAddCalWeekMonthBean;
-import com.rainier.beans.TimeSheetResponse;
+import com.rainier.beans.*;
 import com.rainier.businesslogic.TimeSheetDetails;
 import com.rainier.dto.requestBean.TimeSheetApprovalEntity;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.SwaggerDefinition;
 import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

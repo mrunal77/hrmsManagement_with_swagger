@@ -1,8 +1,5 @@
 package com.rainier.beans;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
 public class RecruitmentApplyNowBean {
 
 	private int applyId;

@@ -1,10 +1,10 @@
 package com.rainier.dto.responseBean;
 
+import com.rainier.entities.BenchSalesAddCandidateEntity;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.rainier.entities.BenchSalesAddCandidateEntity;
 
 public class BenchSalesVendorDetailsEntityResponse 
 {

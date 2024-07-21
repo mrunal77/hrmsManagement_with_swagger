@@ -1,19 +1,8 @@
 package com.rainier.services;
 
-import java.io.InputStream;
-
-import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
+import com.rainier.beans.*;
+import com.rainier.businesslogic.BackgroundCheckDetails;
+import com.rainier.utility.FileUploader;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.SwaggerDefinition;
 import io.swagger.annotations.Tag;
@@ -22,16 +11,11 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.rainier.beans.BgEmpEmploymentGapBean;
-import com.rainier.beans.BgEmpPersonalInfoBean;
-import com.rainier.beans.BgEmpProfessionalReferenceBean;
-import com.rainier.beans.BgEmpProfessionalReferenceSimpleBean;
-import com.rainier.beans.BgEmployementHistorySimpleBean;
-import com.rainier.beans.BgEmploymentHistoryBean;
-import com.rainier.beans.BgHighestDegreeEarnedBean;
-import com.rainier.beans.BgHighestDegreeSimpleBean;
-import com.rainier.businesslogic.BackgroundCheckDetails;
-import com.rainier.utility.FileUploader;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.io.InputStream;
 
 @Path("/BackgroundCheck")
 @Api("/BackgroundCheck")

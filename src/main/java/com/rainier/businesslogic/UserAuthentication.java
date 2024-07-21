@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ws.rs.core.Response;
 
+import com.rainier.utility.*;
 import org.apache.log4j.Logger;
 import org.hibernate.collection.internal.PersistentBag;
 
@@ -30,10 +31,6 @@ import com.rainier.entities.Privileges;
 import com.rainier.entities.User;
 import com.rainier.entities.UserLoginLogEntity;
 import com.rainier.entities.UserRole;
-import com.rainier.utility.FileUploader;
-import com.rainier.utility.HrmsGetDateAndTime;
-import com.rainier.utility.MD5Generator;
-import com.rainier.utility.SendMail;
 
 public class UserAuthentication {
 
@@ -58,6 +55,7 @@ public class UserAuthentication {
 			boolean firstLogin = false;
 			if (!listuserRole.isEmpty()) {
 				userRole1 = listuserRole.get(0);
+				String jwtToken = JwtUtil.generateToken(emailPassword.getEmail());
 				// PersistentBag type of data fetched in bag.
 				PersistentBag bag = (PersistentBag) userRole1.getUsers();
 				for (int i = 0; i <= bag.size() - 1; i++) {
@@ -96,6 +94,7 @@ public class UserAuthentication {
 					loginBean.setEmployeeName(employee.getFirstName() + " " + employee.getLastName());
 					loginBean.setDesignation(employee.getDesignation());
 					loginBean.setEmail(employee.getUserName());
+					loginBean.setJwtToken(jwtToken);
 				} else {
 					loginBean.setStatus(false);
 					loginBean.setMessage("Login Failed, Please Activate User.");

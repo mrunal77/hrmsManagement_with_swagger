@@ -1,6 +1,17 @@
 package com.rainier.services;
 
-import javax.inject.Inject;
+import com.rainier.beans.ChangePasswordRequestBean;
+import com.rainier.beans.LoginRequestBean;
+import com.rainier.beans.SubMenuRequestBean;
+import com.rainier.businesslogic.UserAuthentication;
+import com.rainier.dto.requestBean.ForgetPasswordRequest;
+import com.rainier.dto.requestBean.PassWordUpadateRequest;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
+import org.apache.log4j.Logger;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -8,21 +19,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.SwaggerDefinition;
-import io.swagger.annotations.Tag;
-import org.apache.log4j.Logger;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
-import com.rainier.beans.ChangePasswordRequestBean;
-import com.rainier.beans.LoginRequestBean;
-import com.rainier.beans.SubMenuRequestBean;
-import com.rainier.businesslogic.UserAuthentication;
-import com.rainier.dto.requestBean.ForgetPasswordRequest;
-import com.rainier.dto.requestBean.PassWordUpadateRequest;
-
-// @CrossOrigin
-@CrossOrigin(origins = "http://localhost:4200/,http://localhost:8080/", maxAge = 3600, allowedHeaders = "*")
 @Api("/UserService")
 @SwaggerDefinition(tags = {@Tag(name = "Common Service", description = "REST Common Service")})
 @Path("/userService")
@@ -31,8 +27,8 @@ public class HrmsLoginService {
 	private static final Logger logger = Logger.getLogger(HrmsLoginService.class);
 	private static UserAuthentication userAuthentication = new UserAuthentication();
 
-	@Path("/login")
 	@POST
+	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response UserAuthentication(LoginRequestBean emailPassword) {

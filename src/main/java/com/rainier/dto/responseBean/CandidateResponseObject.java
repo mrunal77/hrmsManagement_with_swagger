@@ -1,9 +1,8 @@
 package com.rainier.dto.responseBean;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.rainier.entities.BenchSalesAddCandidateEntity;
+
+import java.util.List;
 
 public class CandidateResponseObject {
 	

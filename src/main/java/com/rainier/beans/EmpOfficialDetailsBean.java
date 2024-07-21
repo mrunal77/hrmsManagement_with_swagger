@@ -3,8 +3,6 @@ package com.rainier.beans;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import javax.persistence.Column;
-
 public class EmpOfficialDetailsBean {
 
     private int id;

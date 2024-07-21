@@ -1,11 +1,11 @@
 package com.rainier.beans;
 
-import java.util.List;
-import java.util.Set;
-
 import com.rainier.dto.responseBean.CandidateRecruitersBenchSalesResponse;
 import com.rainier.dto.responseBean.VendorSalesExecutiveResponseBean;
 import com.rainier.entities.BenchSalesVendorDetailsEntity;
+
+import java.util.List;
+import java.util.Set;
 
 public class LovResponseBean {
 	private boolean status;

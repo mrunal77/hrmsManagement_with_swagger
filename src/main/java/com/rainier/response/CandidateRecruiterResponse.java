@@ -1,9 +1,9 @@
 package com.rainier.response;
 
+import com.rainier.dto.responseBean.CandidateResponseObject;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.rainier.dto.responseBean.CandidateResponseObject;
 
 public class CandidateRecruiterResponse
 {

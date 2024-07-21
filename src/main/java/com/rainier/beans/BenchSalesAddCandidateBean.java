@@ -1,12 +1,10 @@
 package com.rainier.beans;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rainier.entities.User;
+
+import java.util.Date;
+import java.util.List;
 
 public class BenchSalesAddCandidateBean {
 	private int id;

@@ -1,9 +1,6 @@
 package com.rainier.beans;
 
 import java.sql.Timestamp;
-import java.util.Date;
-
-import javax.persistence.Column;
 
 public class EmployeeRequestBean {
 	private String employeeId;

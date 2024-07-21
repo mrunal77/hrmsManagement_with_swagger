@@ -1,15 +1,14 @@
 package com.rainier.beans;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import com.rainier.dto.responseBean.CandidateResponseObject;
 import com.rainier.dto.responseBean.CityStateResponseBean;
 import com.rainier.entities.BenchSalesAddCandidateEntity;
 import com.rainier.entities.BenchSalesVendorDetailsEntity;
-import com.rainier.entities.Tbl_StatesEntity;
+
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class CommonResponseBean {
 	private boolean status;

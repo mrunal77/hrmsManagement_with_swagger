@@ -1,19 +1,12 @@
 package com.rainier.dao;
 
-import java.util.List;
-
 import com.rainier.beans.RecruitmentApplyNowBean;
 import com.rainier.beans.RecruitmentAssignJobBean;
 import com.rainier.beans.RecruitmentAssignStatusBean;
 import com.rainier.beans.RecruitmentPostProfileBean;
-import com.rainier.entities.RecruitmentApplyNowForJobEntity;
-import com.rainier.entities.RecruitmentAssignJobEntity;
-import com.rainier.entities.RecruitmentAssignReportEntity;
-import com.rainier.entities.RecruitmentCandidateSignUpEntity;
-import com.rainier.entities.RecruitmentInterviewScheduleEntity;
-import com.rainier.entities.RecruitmentMailLogEntity;
-import com.rainier.entities.RecruitmentOpeningsEntity;
-import com.rainier.entities.RecruitmentPostProfileEntity;
+import com.rainier.entities.*;
+
+import java.util.List;
 
 public interface HrmsRecruitmentDao {
 

@@ -1,33 +1,14 @@
 package com.rainier.dao;
 
+import com.rainier.beans.*;
+import com.rainier.dto.requestBean.CandidateSubmissionCount;
+import com.rainier.dto.responseBean.*;
+import com.rainier.entities.*;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
-import com.rainier.beans.BenchSalesAddCandidateBean;
-import com.rainier.beans.BenchSalesAddEmployeeBean;
-import com.rainier.beans.BenchSalesAddTestimonialsBean;
-import com.rainier.beans.BenchSalesVendorCandidateMappingBean;
-import com.rainier.beans.BenchSalesVendorDetailsBean;
-import com.rainier.beans.CandSubmissionBean;
-import com.rainier.dto.requestBean.CandidateSubmissionCount;
-import com.rainier.dto.responseBean.BenchSalesVendorDetailsEntityResponse;
-import com.rainier.dto.responseBean.CandidateRecruitersResponse;
-import com.rainier.dto.responseBean.CandidateResponseObject;
-import com.rainier.dto.responseBean.CandidateSalesManagerResponse;
-import com.rainier.dto.responseBean.CityStateResponseBean;
-import com.rainier.dto.responseBean.VendorSalesExecutiveResponseBean;
-import com.rainier.entities.BenchSalesAddCandidateEntity;
-import com.rainier.entities.BenchSalesAddEmployeeEntity;
-import com.rainier.entities.BenchSalesAddTestimonialsEntity;
-import com.rainier.entities.BenchSalesMailLogEntity;
-import com.rainier.entities.BenchSalesRecruiterEntity;
-import com.rainier.entities.BenchSalesVendorCandidateMappingEntity;
-import com.rainier.entities.BenchSalesVendorDetailsEntity;
-import com.rainier.entities.Privileges;
-import com.rainier.entities.Tbl_CitiesEntity;
-import com.rainier.entities.User;
 
 public interface HrmsBenchSalesDao {
 

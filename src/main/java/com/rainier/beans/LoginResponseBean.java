@@ -17,6 +17,7 @@ public class LoginResponseBean {
 	private String email;
 	private Integer repId;
 	private Date dateOfJoining;
+	private String jwtToken;
 	
 	
 	
@@ -151,6 +152,12 @@ public class LoginResponseBean {
 		this.designation = designation;
 	}
 
-	
-	
+
+	public String getJwtToken() {
+		return jwtToken;
+	}
+
+	public void setJwtToken(String jwtToken) {
+		this.jwtToken = jwtToken;
+	}
 }

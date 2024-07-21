@@ -8,7 +8,6 @@ import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;

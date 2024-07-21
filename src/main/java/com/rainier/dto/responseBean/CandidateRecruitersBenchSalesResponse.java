@@ -1,10 +1,9 @@
 package com.rainier.dto.responseBean;
 
-import java.util.List;
-import java.util.Set;
-
 import com.rainier.entities.BenchSalesAddCandidateEntity;
 import com.rainier.entities.User;
+
+import java.util.List;
 
 public class CandidateRecruitersBenchSalesResponse {
  private List<User>recruiters;

@@ -1,10 +1,7 @@
 package com.rainier.services;
 
-import com.rainier.beans.BgEmpProfessionalReferenceBean;
 import com.rainier.beans.HolidayNamesBean;
 import com.rainier.beans.LeaveRequestBean;
-import com.rainier.beans.TimeSheet;
-import com.rainier.beans.TimeSheetAddCalWeekMonthBean;
 import com.rainier.beans.TimeSheetDailyWork;
 import com.rainier.businesslogic.SelfServices;
 import io.swagger.annotations.Api;
@@ -13,7 +10,6 @@ import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

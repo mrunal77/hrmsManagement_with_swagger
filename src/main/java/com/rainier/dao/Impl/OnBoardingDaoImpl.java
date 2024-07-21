@@ -5,12 +5,10 @@ import com.rainier.dto.requestBean.EmployeeCurrentAddressBean;
 import com.rainier.dto.requestBean.OnBoardingJobDetailsRequestBean;
 import com.rainier.entities.*;
 import org.apache.log4j.Logger;
-import org.glassfish.jersey.internal.guava.Lists;
 import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

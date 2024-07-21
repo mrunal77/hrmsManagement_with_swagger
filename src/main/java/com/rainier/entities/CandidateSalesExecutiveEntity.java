@@ -1,13 +1,6 @@
 package com.rainier.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.hibernate.id.Assigned;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "candidate_sales_executive")

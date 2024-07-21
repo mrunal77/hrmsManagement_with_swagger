@@ -9,7 +9,6 @@ import com.rainier.entities.VisaDocumentsEntity;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 

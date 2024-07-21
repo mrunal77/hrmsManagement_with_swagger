@@ -1,19 +1,10 @@
 package com.rainier.services;
 
-import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
-
-import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
+import com.rainier.beans.RecruitmentAssignJobBean;
+import com.rainier.beans.RecruitmentAssignStatusBean;
+import com.rainier.beans.RecruitmentPostProfileBean;
+import com.rainier.businesslogic.RecruitmentPortal;
+import com.rainier.utility.FileUploadUtility;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.SwaggerDefinition;
 import io.swagger.annotations.Tag;
@@ -23,12 +14,11 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.rainier.beans.RecruitmentAssignJobBean;
-import com.rainier.beans.RecruitmentAssignStatusBean;
-import com.rainier.beans.RecruitmentPostProfileBean;
-import com.rainier.beans.RecruitmentPostProfileDuplicacyBean;
-import com.rainier.businesslogic.RecruitmentPortal;
-import com.rainier.utility.FileUploadUtility;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.io.InputStream;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*")
 @Path("/PostProfile")

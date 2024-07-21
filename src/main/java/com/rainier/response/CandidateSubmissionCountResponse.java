@@ -1,9 +1,9 @@
 package com.rainier.response;
 
+import com.rainier.beans.CandSubmissionBean;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.rainier.beans.CandSubmissionBean;
 
 public class CandidateSubmissionCountResponse 
 {

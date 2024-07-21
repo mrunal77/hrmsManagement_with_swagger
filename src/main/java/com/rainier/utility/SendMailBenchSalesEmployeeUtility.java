@@ -1,17 +1,12 @@
 package com.rainier.utility;
 
-import java.util.Date;
-import java.util.Properties;
+import org.apache.log4j.Logger;
 
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
-import org.apache.log4j.Logger;
+import java.util.Date;
+import java.util.Properties;
 
 
 

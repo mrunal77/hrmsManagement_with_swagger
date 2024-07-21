@@ -1,8 +1,6 @@
 package com.rainier.services;
 
 import com.rainier.beans.EmployeeLeaveTypeBean;
-import com.rainier.beans.EmployeeRequestBean;
-import com.rainier.beans.LeaveRequestBean;
 import com.rainier.beans.UpdateEmployeeLeaveDetails;
 import com.rainier.beans.UpdateLeaveRequest;
 import com.rainier.businesslogic.LeaveDetails;
@@ -12,7 +10,6 @@ import io.swagger.annotations.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

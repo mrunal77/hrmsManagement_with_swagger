@@ -1,6 +1,5 @@
 package com.rainier.dao;
 
-import com.rainier.dto.requestBean.PassWordUpadateRequest;
 import com.rainier.entities.MenMenu1;
 import com.rainier.entities.Privileges;
 import com.rainier.entities.UserLoginLogEntity;

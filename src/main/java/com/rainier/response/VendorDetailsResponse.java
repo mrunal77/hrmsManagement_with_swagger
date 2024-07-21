@@ -1,9 +1,9 @@
 package com.rainier.response;
 
+import com.rainier.dto.responseBean.BenchSalesVendorDetailsEntityResponse;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.rainier.dto.responseBean.BenchSalesVendorDetailsEntityResponse;
 
 public class VendorDetailsResponse 
 {

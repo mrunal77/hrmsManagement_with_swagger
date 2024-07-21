@@ -1,9 +1,9 @@
 package com.rainier.dto.responseBean;
 
+import com.rainier.entities.User;
+
 import java.util.Date;
 import java.util.List;
-
-import com.rainier.entities.User;
 
 public class CandidateSalesManagerResponse {
 	private int id;

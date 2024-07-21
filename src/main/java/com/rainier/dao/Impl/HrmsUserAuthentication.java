@@ -2,7 +2,6 @@ package com.rainier.dao.Impl;
 
 import com.rainier.dao.HrmsUserAuthenticate;
 import com.rainier.dbconfiguration.DbConnect;
-import com.rainier.dto.requestBean.PassWordUpadateRequest;
 import com.rainier.entities.MenMenu1;
 import com.rainier.entities.Privileges;
 import com.rainier.entities.UserLoginLogEntity;
@@ -14,8 +13,6 @@ import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 import static com.rainier.dbconfiguration.DbConnect.DbCon;
 

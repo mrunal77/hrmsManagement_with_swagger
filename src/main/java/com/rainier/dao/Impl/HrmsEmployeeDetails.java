@@ -15,15 +15,13 @@ import org.hibernate.query.Query;
 
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureQuery;
-
-import static com.rainier.dbconfiguration.DbConnect.DbCon;
-
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import static com.rainier.dbconfiguration.DbConnect.DbCon;
 
 public class HrmsEmployeeDetails implements HrmsEmployeeDao {
 	private final static Logger logger = Logger.getLogger(EmployeeDetailsEntity.class);

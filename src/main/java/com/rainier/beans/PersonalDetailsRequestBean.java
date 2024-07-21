@@ -1,7 +1,6 @@
 package com.rainier.beans;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class PersonalDetailsRequestBean {
 	private int id;

@@ -5,14 +5,13 @@ import com.rainier.dbconfiguration.DbConnect;
 import com.rainier.entities.LeaveRequestEntity;
 import com.rainier.entities.MyLeaveRequestEntity;
 import com.rainier.entities.TimeSheetEntity;
-
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.query.Query;
 
-import static com.rainier.dbconfiguration.DbConnect.DbCon;
-
 import java.util.List;
+
+import static com.rainier.dbconfiguration.DbConnect.DbCon;
 
 public class HrmsSelfDetails implements HrmsSelfServiceDao {
     private final static Logger logger = Logger.getLogger(HrmsSelfDetails.class);

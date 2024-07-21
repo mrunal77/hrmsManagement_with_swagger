@@ -1,47 +1,20 @@
 package com.rainier.dao.Impl;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
+import com.rainier.beans.*;
+import com.rainier.dao.HrmsBenchSalesDao;
+import com.rainier.dbconfiguration.DbConnect;
+import com.rainier.dto.requestBean.CandidateSubmissionCount;
+import com.rainier.dto.responseBean.*;
+import com.rainier.entities.*;
+import com.rainier.response.VendorDetailsResponse;
+import com.rainier.utility.MD5Generator;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import com.rainier.beans.BenchSalesAddCandidateBean;
-import com.rainier.beans.BenchSalesAddEmployeeBean;
-import com.rainier.beans.BenchSalesAddTestimonialsBean;
-import com.rainier.beans.BenchSalesVendorCandidateMappingBean;
-import com.rainier.beans.BenchSalesVendorDetailsBean;
-import com.rainier.beans.CandSubmissionBean;
-import com.rainier.dao.HrmsBenchSalesDao;
-import com.rainier.dbconfiguration.DbConnect;
-import com.rainier.dto.requestBean.CandidateSubmissionCount;
-import com.rainier.dto.responseBean.BenchSalesVendorDetailsEntityResponse;
-import com.rainier.dto.responseBean.CandidateRecruitersResponse;
-import com.rainier.dto.responseBean.CandidateResponseObject;
-import com.rainier.dto.responseBean.CandidateSalesManagerResponse;
-import com.rainier.dto.responseBean.CityStateResponseBean;
-import com.rainier.dto.responseBean.VendorSalesExecutiveResponseBean;
-import com.rainier.entities.BenchSalesAddCandidateEntity;
-import com.rainier.entities.BenchSalesAddEmployeeEntity;
-import com.rainier.entities.BenchSalesAddTestimonialsEntity;
-import com.rainier.entities.BenchSalesMailLogEntity;
-import com.rainier.entities.BenchSalesRecruiterEntity;
-import com.rainier.entities.BenchSalesVendorCandidateMappingEntity;
-import com.rainier.entities.BenchSalesVendorDetailsEntity;
-import com.rainier.entities.CandidateSalesExecutiveEntity;
-import com.rainier.entities.EmployeeDetailsEntity;
-import com.rainier.entities.Privileges;
-import com.rainier.entities.Tbl_CitiesEntity;
-import com.rainier.entities.User;
-import com.rainier.response.VendorDetailsResponse;
-import com.rainier.utility.MD5Generator;
+import java.math.BigInteger;
+import java.util.*;
 
 public class HrmsBenchSalesDaoImpl implements HrmsBenchSalesDao {
 

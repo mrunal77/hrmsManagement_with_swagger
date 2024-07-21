@@ -1,9 +1,9 @@
 package com.rainier.beans;
 
+import com.rainier.entities.SavingTimeSheet;
+
 import java.util.Date;
 import java.util.List;
-
-import com.rainier.entities.SavingTimeSheet;
 
 public class TimeSheetsMonthlyBean {
 	private int userId;

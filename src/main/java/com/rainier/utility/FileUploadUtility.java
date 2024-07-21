@@ -1,12 +1,8 @@
 package com.rainier.utility;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 import org.apache.log4j.Logger;
+
+import java.io.*;
 
 public class FileUploadUtility {
 	private final static Logger logger = Logger.getLogger(FileUploadUtility.class);

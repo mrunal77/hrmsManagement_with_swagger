@@ -1,8 +1,8 @@
 package com.rainier.dto.responseBean;
 
-import java.util.ArrayList;
-
 import com.rainier.beans.EmpTaskResponse;
+
+import java.util.ArrayList;
 
 public class TaskEmpResponse {
 	String message;

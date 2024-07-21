@@ -1,16 +1,13 @@
 package com.rainier.utility;
 
+import com.rainier.dbconfiguration.DbConnect;
+import com.rainier.entities.EmpPersonalDetailsEntity;
+import org.hibernate.query.Query;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
-
-import org.hibernate.query.Query;
-
-import com.rainier.dbconfiguration.DbConnect;
-import com.rainier.entities.EmpPersonalDetailsEntity;
 
 public class Schedular {
 	public void callSchedular() {

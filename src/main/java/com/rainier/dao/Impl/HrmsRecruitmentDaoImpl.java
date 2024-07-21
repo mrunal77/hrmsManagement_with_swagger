@@ -1,44 +1,24 @@
 package com.rainier.dao.Impl;
 
-import static com.rainier.dbconfiguration.DbConnect.DbCon;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import javax.validation.constraints.Max;
-import javax.ws.rs.core.Response;
-
-import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Transaction;
-import org.hibernate.id.Assigned;
-import org.hibernate.query.Query;
-
-import com.rainier.beans.CommonResponseBean;
 import com.rainier.beans.RecruitmentApplyNowBean;
 import com.rainier.beans.RecruitmentAssignJobBean;
 import com.rainier.beans.RecruitmentAssignStatusBean;
 import com.rainier.beans.RecruitmentPostProfileBean;
-import com.rainier.beans.RecruitmentPostProfileDuplicacyBean;
 import com.rainier.dao.HrmsRecruitmentDao;
 import com.rainier.dbconfiguration.DbConnect;
-import com.rainier.entities.EmployeeDocumentsEntity;
-import com.rainier.entities.RecruitmentApplyNowForJobEntity;
-import com.rainier.entities.RecruitmentAssignJobEntity;
-import com.rainier.entities.RecruitmentAssignReportEntity;
-import com.rainier.entities.RecruitmentCandidateSignUpEntity;
-import com.rainier.entities.RecruitmentInterviewScheduleEntity;
-import com.rainier.entities.RecruitmentMailLogEntity;
-import com.rainier.entities.RecruitmentOpeningsEntity;
-import com.rainier.entities.RecruitmentPostProfileEntity;
-import com.rainier.entities.VisaDocumentsEntity;
+import com.rainier.entities.*;
 import com.rainier.utility.HrmsGetDateAndTime;
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static com.rainier.dbconfiguration.DbConnect.DbCon;
 
 public class HrmsRecruitmentDaoImpl implements HrmsRecruitmentDao {
 

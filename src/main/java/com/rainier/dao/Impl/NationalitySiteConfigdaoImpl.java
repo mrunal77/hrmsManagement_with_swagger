@@ -1,24 +1,16 @@
 package com.rainier.dao.Impl;
 
 
-
-
-import java.util.List;
-
-import javax.persistence.Entity;
-
+import com.rainier.beans.NationalityAddBean;
+import com.rainier.dao.NationalitySiteConfigdao;
+import com.rainier.dbconfiguration.DbConnect;
+import com.rainier.entities.NationalityAddEntity;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import com.rainier.beans.NationalityAddBean;
-import com.rainier.dao.NationalitySiteConfigdao;
-import com.rainier.dbconfiguration.DbConnect;
-import com.rainier.entities.BenchSalesAddEmployeeEntity;
-import com.rainier.entities.BenchSalesAddTestimonialsEntity;
-import com.rainier.entities.BenchSalesRecruiterEntity;
-import com.rainier.entities.NationalityAddEntity;
+import java.util.List;
 
 public class NationalitySiteConfigdaoImpl implements NationalitySiteConfigdao {
 	

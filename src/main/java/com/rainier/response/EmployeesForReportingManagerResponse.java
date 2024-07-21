@@ -1,8 +1,8 @@
 package com.rainier.response;
 
-import java.util.List;
-
 import com.rainier.entities.EmployeeDetailsEntity;
+
+import java.util.List;
 
 public class EmployeesForReportingManagerResponse  
 {

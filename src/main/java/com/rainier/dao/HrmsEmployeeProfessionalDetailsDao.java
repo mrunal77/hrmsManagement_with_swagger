@@ -2,7 +2,6 @@ package com.rainier.dao;
 
 import com.rainier.entities.EmployeeDocumentsEntity;
 
-import java.sql.Date;
 import java.util.List;
 
 public interface HrmsEmployeeProfessionalDetailsDao {

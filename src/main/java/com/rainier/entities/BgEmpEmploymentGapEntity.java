@@ -1,8 +1,7 @@
 package com.rainier.entities;
 
-import java.util.Date;
-
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="rs_BgEmpEmploymentGap")

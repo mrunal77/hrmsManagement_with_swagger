@@ -1,37 +1,22 @@
 package com.rainier.businesslogic;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-
-import javax.ws.rs.core.Response;
-
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.log4j.Logger;
-import org.hibernate.query.Query;
-
-import com.rainier.beans.EmpLeaveResponseBean;
-import com.rainier.beans.EmployeeLeaveTypeBean;
-import com.rainier.beans.EmployeeLeaveTypeResponseBean;
-import com.rainier.beans.LeaveManagementOptionsResponseBean;
-import com.rainier.beans.LeaveRequestBean;
-import com.rainier.beans.LeavesResponseBean;
-import com.rainier.beans.UpdateEmployeeLeaveDetails;
-import com.rainier.beans.UpdateLeaveRequest;
+import com.rainier.beans.*;
 import com.rainier.dao.HrmsEmployeeDao;
 import com.rainier.dao.HrmsLeaveRequestDao;
 import com.rainier.dao.Impl.HrmsEmployeeDetails;
 import com.rainier.dao.Impl.HrmsLeaveRequest;
 import com.rainier.dao.Impl.HrmsSelfDetails;
-import com.rainier.dbconfiguration.DbConnect;
-import com.rainier.entities.EmployeeDetailsEntity;
-import com.rainier.entities.EmployeeLeaveRequestSummaryEntity;
 import com.rainier.entities.EmployeeLeaveTypeEntity;
 import com.rainier.entities.LeaveManagementEntity;
 import com.rainier.entities.LeaveRequestEntity;
-import com.rainier.entities.MailLogEntity;
 import com.rainier.entities.MyLeaveRequestEntity;
 import com.rainier.utility.HrmsGetDateAndTime;
-import com.rainier.utility.SendMail;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.log4j.Logger;
+
+import javax.ws.rs.core.Response;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public class LeaveDetails {
 	private static final Logger logger = Logger.getLogger(LeaveDetails.class);

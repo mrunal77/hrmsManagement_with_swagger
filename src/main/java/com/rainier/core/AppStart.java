@@ -1,7 +1,6 @@
 package com.rainier.core;
 
 
-import com.rainier.Filters.JwtFilter;
 import com.rainier.dbconfiguration.DbConnect;
 import com.rainier.services.*;
 import io.swagger.jaxrs.config.BeanConfig;
@@ -63,7 +62,6 @@ public class AppStart extends Application {
         logger.info("Classes Starting......");
         Set<Class<?>> resources = new java.util.HashSet<>();
         resources.add(CORSFilter.class);
-        resources.add(JwtFilter.class);
         resources.add(HrmsLoginService.class);
         resources.add(HrmsBusinessService.class);
         resources.add(HrmsDepartmentService.class);

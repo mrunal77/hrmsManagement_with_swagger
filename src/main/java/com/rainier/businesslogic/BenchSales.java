@@ -1,56 +1,30 @@
 package com.rainier.businesslogic;
 
-import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.ws.rs.core.Response;
-
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.log4j.Logger;
-
-import com.rainier.beans.BenchSalesAddCandidateBean;
-import com.rainier.beans.BenchSalesAddEmployeeBean;
-import com.rainier.beans.BenchSalesAddTestimonialsBean;
-import com.rainier.beans.BenchSalesRecruiterBean;
-import com.rainier.beans.BenchSalesVendorCandidateMappingBean;
-import com.rainier.beans.BenchSalesVendorDetailsBean;
-import com.rainier.beans.CandSubmissionBean;
 import com.rainier.beans.CommonResponseBean;
-import com.rainier.beans.EntityStatusBean;
-import com.rainier.beans.LovResponseBean;
+import com.rainier.beans.*;
 import com.rainier.dao.HrmsBenchSalesDao;
 import com.rainier.dao.HrmsEmployeeDao;
 import com.rainier.dao.Impl.HrmsBenchSalesDaoImpl;
 import com.rainier.dao.Impl.HrmsEmployeeDetails;
 import com.rainier.dto.requestBean.CandidateSubmissionCount;
-import com.rainier.dto.responseBean.BenchSalesVendorDetailsEntityResponse;
-import com.rainier.dto.responseBean.CandidateRecruitersResponse;
-import com.rainier.dto.responseBean.CandidateResponseObject;
-import com.rainier.dto.responseBean.CandidateSalesManagerResponse;
-import com.rainier.dto.responseBean.CityStateResponseBean;
-import com.rainier.dto.responseBean.VendorSalesExecutiveResponseBean;
-import com.rainier.entities.BenchSalesAddCandidateEntity;
-import com.rainier.entities.BenchSalesAddEmployeeEntity;
-import com.rainier.entities.BenchSalesAddTestimonialsEntity;
-import com.rainier.entities.BenchSalesMailLogEntity;
-import com.rainier.entities.BenchSalesRecruiterEntity;
-import com.rainier.entities.BenchSalesVendorCandidateMappingEntity;
-import com.rainier.entities.BenchSalesVendorDetailsEntity;
-import com.rainier.entities.MailLogEntity;
-import com.rainier.entities.Privileges;
-import com.rainier.entities.Tbl_CitiesEntity;
-import com.rainier.entities.User;
+import com.rainier.dto.responseBean.*;
+import com.rainier.entities.*;
 import com.rainier.response.CandidateRecruiterResponse;
 import com.rainier.response.CandidateSubmissionCountResponse;
 import com.rainier.response.VendorDetailsResponse;
 import com.rainier.utility.HrmsGetDateAndTime;
 import com.rainier.utility.SendMail;
 import com.rainier.utility.SendMailBenchSalesEmployeeUtility;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.log4j.Logger;
+
+import javax.ws.rs.core.Response;
+import java.lang.reflect.InvocationTargetException;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 public class BenchSales {
 	public static Logger logger = Logger.getLogger(RecruitmentPortal.class);

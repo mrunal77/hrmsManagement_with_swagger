@@ -1,11 +1,9 @@
 package com.rainier.dao;
 
-import java.util.List;
-
-
 import com.rainier.beans.NationalityAddBean;
-
 import com.rainier.entities.NationalityAddEntity;
+
+import java.util.List;
 
 
 

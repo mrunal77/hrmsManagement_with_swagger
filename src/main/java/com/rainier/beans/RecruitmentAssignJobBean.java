@@ -1,7 +1,5 @@
 package com.rainier.beans;
 
-import java.util.List;
-
 public class RecruitmentAssignJobBean {
 
 	private int id;

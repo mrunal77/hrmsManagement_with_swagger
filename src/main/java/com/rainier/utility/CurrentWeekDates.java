@@ -11,9 +11,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
-import static java.time.DayOfWeek.*;
-
-
+import static java.time.DayOfWeek.SATURDAY;
+import static java.time.DayOfWeek.SUNDAY;
 import static java.time.temporal.TemporalAdjusters.nextOrSame;
 import static java.time.temporal.TemporalAdjusters.previousOrSame;
 
