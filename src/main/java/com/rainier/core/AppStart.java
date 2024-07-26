@@ -4,10 +4,14 @@ package com.rainier.core;
 import com.rainier.dbconfiguration.DbConnect;
 import com.rainier.services.*;
 import io.swagger.jaxrs.config.BeanConfig;
+import io.swagger.models.Contact;
+import io.swagger.models.Info;
+import io.swagger.models.License;
 import io.swagger.models.Swagger;
 import io.swagger.models.auth.ApiKeyAuthDefinition;
 import io.swagger.models.auth.In;
 import org.apache.log4j.Logger;
+import org.springframework.context.ApplicationContext;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -18,10 +22,24 @@ import java.util.Set;
 @ApplicationPath("/api")
 public class AppStart extends Application {
     private static final Logger logger = Logger.getLogger(AppStart.class);
+    private static ApplicationContext context;
 
     // Constructor
     public AppStart() {
         logger.info("Swagger Configuration......");
+
+        Swagger swagger = new Swagger();
+        swagger.setInfo(new Info()
+                .title("HRMS API")
+                .description("API documentation for HRMS system")
+                .version("1.0")
+        );
+
+        swagger.addSecurityDefinition("JWT", new ApiKeyAuthDefinition("Authorization", In.HEADER));
+        swagger.setConsumes(java.util.Collections.singletonList("application/json"));
+        swagger.setProduces(java.util.Collections.singletonList("application/json"));
+
+
         BeanConfig beanConfig = new BeanConfig();
         beanConfig.setVersion("1.0");
         beanConfig.setSchemes(new String[]{"http"});
@@ -32,11 +50,11 @@ public class AppStart extends Application {
         beanConfig.setPrettyPrint(true);
 
         // Add JWT Authentication
-        Swagger swagger = new io.swagger.models.Swagger();
-        ApiKeyAuthDefinition apiKeyAuthDefinition = new ApiKeyAuthDefinition();
-        apiKeyAuthDefinition.setName("Authorization");
-        apiKeyAuthDefinition.setIn(In.HEADER);
-        swagger.addSecurityDefinition("JWT", apiKeyAuthDefinition);
+//        Swagger swagger = new io.swagger.models.Swagger();
+//        ApiKeyAuthDefinition apiKeyAuthDefinition = new ApiKeyAuthDefinition();
+//        apiKeyAuthDefinition.setName("Authorization");
+//        apiKeyAuthDefinition.setIn(In.HEADER);
+//        swagger.addSecurityDefinition("JWT", apiKeyAuthDefinition);
 
         beanConfig.configure(swagger);
 
@@ -94,5 +112,9 @@ public class AppStart extends Application {
         Map<String, Object> props = new HashMap<>();
         props.put("jersey.config.server.provider.classnames", "org.glassfish.jersey.media.multipart.MultiPartFeature");
         return props;
+    }
+
+    public static ApplicationContext getContext() {
+        return context;
     }
 }
