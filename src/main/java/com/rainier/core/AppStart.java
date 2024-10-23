@@ -95,6 +95,7 @@ public class AppStart extends Application {
         logger.info("Registering REST services...");
         Set<Class<?>> resources = new java.util.HashSet<>();
         resources.add(CORSFilter.class);
+        resources.add(JwtFilter.class);
         resources.add(HrmsLoginService.class);
         resources.add(HrmsBusinessService.class);
         resources.add(HrmsDepartmentService.class);
