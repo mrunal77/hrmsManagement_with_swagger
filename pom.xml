@@ -125,6 +125,21 @@
 			<version>1.9.3</version>
 		</dependency>
 
+		<!-- SLF4J API -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.36</version> <!-- Or the latest stable version -->
+		</dependency>
+
+		<!-- SLF4J to Log4j Bridge -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.36</version> <!-- Or the latest stable version -->
+		</dependency>
+
+		<!-- Log4j Logging Implementation -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -157,6 +172,20 @@
 		    <artifactId>javax.servlet-api</artifactId>
 		    <version>4.0.0-b07</version>
 		    <scope>provided</scope>
+		</dependency>
+
+		<!-- API, java.xml.bind module -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+
+		<!-- Runtime, com.sun.xml.bind module -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.2</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->

@@ -1,6 +1,5 @@
 package com.rainier.core;
 
-
 import com.rainier.dbconfiguration.DbConnect;
 import com.rainier.services.*;
 import io.swagger.jaxrs.config.BeanConfig;
@@ -26,48 +25,64 @@ public class AppStart extends Application {
 
     // Constructor
     public AppStart() {
-        logger.info("Swagger Configuration......");
+        configureSwagger();
+        initializeDatabase();
+    }
+
+    private void configureSwagger() {
+        logger.info("Configuring Swagger...");
+
+        // Setup Swagger info
+        Info swaggerInfo = new Info()
+                .title("HRMS API")
+                .description("API documentation for the HRMS system")
+                .version("1.0")
+                .contact(new Contact().name("Support Team").email("support@company.com"))
+                .license(new License().name("Company License").url("http://company.com/license"));
 
         Swagger swagger = new Swagger();
-        swagger.setInfo(new Info()
-                .title("HRMS API")
-                .description("API documentation for HRMS system")
-                .version("1.0")
-        );
+        swagger.setInfo(swaggerInfo);
 
-        swagger.addSecurityDefinition("JWT", new ApiKeyAuthDefinition("Authorization", In.HEADER));
+        // JWT Security Definition
+        ApiKeyAuthDefinition jwtAuth = new ApiKeyAuthDefinition("Authorization", In.HEADER);
+        swagger.addSecurityDefinition("JWT", jwtAuth);
+
+        // Setting content types
         swagger.setConsumes(java.util.Collections.singletonList("application/json"));
         swagger.setProduces(java.util.Collections.singletonList("application/json"));
 
-
+        // Configure BeanConfig for Swagger
         BeanConfig beanConfig = new BeanConfig();
         beanConfig.setVersion("1.0");
         beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setHost("localhost:8080");
         beanConfig.setBasePath("/HRMS/api");
         beanConfig.setResourcePackage("com.rainier.services");
-        beanConfig.setScan(true);
         beanConfig.setPrettyPrint(true);
+        beanConfig.setScan(true);
 
-        // Add JWT Authentication
-//        Swagger swagger = new io.swagger.models.Swagger();
-//        ApiKeyAuthDefinition apiKeyAuthDefinition = new ApiKeyAuthDefinition();
-//        apiKeyAuthDefinition.setName("Authorization");
-//        apiKeyAuthDefinition.setIn(In.HEADER);
-//        swagger.addSecurityDefinition("JWT", apiKeyAuthDefinition);
+        logger.info("Swagger configuration complete.");
+    }
 
-        beanConfig.configure(swagger);
+    private void initializeDatabase() {
+        logger.info("Initializing database connection...");
 
-        logger.info("Application Starting......");
         try {
-            logger.info("Initializing Database Connection...");
+            // Begin transaction
             DbConnect.DbCon().beginTransaction();
-            DbConnect.DbCon().createNativeQuery("select 1");
-            // System.out.println(DbConnect.dbSessionFactory().getCurrentSession().isOpen());
+
+            // Test connection with a simple query
+            DbConnect.DbCon().createNativeQuery("SELECT 1").getResultList();
+
+            // Commit transaction
             DbConnect.DbCon().getTransaction().commit();
+            logger.info("Database initialized successfully.");
         } catch (Exception e) {
-            // System.out.println("Faild to Execute Query.");
-            logger.error("Initializing Database Connection Failed..");
+            // Rollback the transaction in case of failure
+            if (DbConnect.DbCon().getTransaction().isActive()) {
+                DbConnect.DbCon().getTransaction().rollback();
+            }
+            logger.error("Database initialization failed: ", e);
         }
     }
 
@@ -77,7 +92,7 @@ public class AppStart extends Application {
     }
 
     private Set<Class<?>> getRestClasses() {
-        logger.info("Classes Starting......");
+        logger.info("Registering REST services...");
         Set<Class<?>> resources = new java.util.HashSet<>();
         resources.add(CORSFilter.class);
         resources.add(HrmsLoginService.class);
@@ -104,6 +119,7 @@ public class AppStart extends Application {
         resources.add(NationalityContextService.class);
         resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
         resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+        logger.info("REST services registered successfully.");
         return resources;
     }
 
