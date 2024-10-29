@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "e81f3231-7da0-44bb-aa42-6915b6ced047",
+		"name": "HRMS Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3082891",
+		"_collection_link": "https://warped-rocket-930089.postman.co/workspace/Home~c80036cb-09e7-4e1e-afee-b94c8bb878f9/collection/3082891-e81f3231-7da0-44bb-aa42-6915b6ced047?action=share&source=collection_link&creator=3082891"
+	},
+	"item": [
+		{
+			"name": "CommonServices",
+			"item": [
+				{
+					"name": "AllReportingManagerList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/common/AllReportingManagerList?roleId=1&businessunitId=1&departmentId=1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"common",
+								"AllReportingManagerList"
+							],
+							"query": [
+								{
+									"key": "roleId",
+									"value": "1"
+								},
+								{
+									"key": "businessunitId",
+									"value": "1"
+								},
+								{
+									"key": "departmentId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetLeaveType",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/common/GetLeaveType",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"common",
+								"GetLeaveType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HRDropdownList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/common/HRDropdownList",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"common",
+								"HRDropdownList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HrManagerList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/common/HrManagerList?businessunitId=1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"common",
+								"HrManagerList"
+							],
+							"query": [
+								{
+									"key": "businessunitId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "All common services List"
+		},
+		{
+			"name": "userService",
+			"item": [
+				{
+					"name": "Token Generate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var userBody = JSON.parse(pm.response.text());\r",
+									"\r",
+									"pm.environment.set(\"AccessToken\", userBody.jwtToken);\r",
+									"\r",
+									"console.log(userBody.jwtToken)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"superadmin@equinox.com\",\r\n  \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/userService/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"userService",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "User Services like Login, SignUp, MenuList, etc."
+		}
+	]
+}
